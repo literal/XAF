@@ -20,7 +20,8 @@
 		"phake/phake": "^3",
 		"mikey179/vfsstream": "^1.6",
 		"twig/twig": "1.*",
-		"doctrine/common": "^2.5"
+		"doctrine/common": "^2.5",
+		"swiftmailer/swiftmailer": "6.*"
 	},
 	"autoload": {
 		"psr-4": {
