@@ -40,9 +40,9 @@ class PgsqlSessionLogger
 			$session->getToken(),
 			$_SERVER['SERVER_NAME'],
 			$_SERVER['REMOTE_ADDR'],
-			isset($_SERVER['REMOTE_HOST']) ? $_SERVER['REMOTE_HOST'] : \gethostbyaddr($_SERVER['REMOTE_ADDR']),
-			isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
-			isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null
+            $_SERVER['REMOTE_HOST'] ?? \gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            $_SERVER['HTTP_USER_AGENT'] ?? null,
+            $_SERVER['HTTP_REFERER'] ?? null
 		);
 	}
 

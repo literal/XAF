@@ -22,7 +22,7 @@ class DateValidator extends NotEmptyValidator
 	protected $timeZone;
 
 	/**
-	 * @param mixed $timeZone The time zone identifier (e. g. 'Europe/Berlin') or a DateTimeZone object,
+	 * @param mixed $timeZone The time zone identifier (e.g. 'Europe/Berlin') or a DateTimeZone object,
 	 *     defaults to the server's time zone (as set in php.ini).
 	 *     The DateTime instance resulting from a successful validation will be set to this timezone.
 	 */

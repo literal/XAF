@@ -43,7 +43,7 @@ class MatchingHashConstraint extends Constraint
 		{
 			return $expectation->evaluate($actualValue, '', true);
 		}
-		// strict comparision only for "FALSE" expectation values ('', 0, [], null, ...),
+		// strict comparison only for "FALSE" expectation values ('', 0, [], null, ...),
 		// to be able to compare Objects even if they are not the same Instance
 		return $expectation ? $expectation == $actualValue : $expectation === $actualValue;
 	}

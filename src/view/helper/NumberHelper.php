@@ -27,18 +27,18 @@ class NumberHelper
 	 *
 	 * @param mixed $value
 	 * @param int $precision Number of fractional digits
-	 * @param bool $seperateThousands Whether to group 1000s
+	 * @param bool $separateThousands Whether to group 1000s
 	 * @param string $default Value to return if given number empty or not numeric
 	 * @return string
 	 */
-	public function formatNumber( $value, $precision = 0, $seperateThousands = true, $default = '' )
+	public function formatNumber( $value, $precision = 0, $separateThousands = true, $default = '' )
 	{
 		return \is_numeric($value)
 			? \number_format(
 				$value,
 				$precision,
 				static::$numberSeparators['decimal'],
-				$seperateThousands ? static::$numberSeparators['thousands'] : ''
+				$separateThousands ? static::$numberSeparators['thousands'] : ''
 			  )
 			: $default;
 	}

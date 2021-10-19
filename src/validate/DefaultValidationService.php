@@ -14,7 +14,7 @@ class DefaultValidationService implements ValidationService
 	/**
 	 * @param DiContainer $container
 	 * @param string|null $objectQualifier Qualifier to add to the object keys of the validator requested from the DI
-	 *     container - usually specifies the language, e. g. 'de.de'
+	 *     container - usually specifies the language, e.g. 'de.de'
 	 */
 	public function __construct( DiContainer $container, $objectQualifier = null )
 	{

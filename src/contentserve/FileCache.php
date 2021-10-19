@@ -52,7 +52,7 @@ class FileCache
 	 *
 	 * @param string $resourceId
 	 * @param int $lastModifiedTimestamp
-	 * @return int The handle to be used for susequent operations on the cache entry
+	 * @return int The handle to be used for subsequent operations on the cache entry
 	 */
 	public function openEntry( $resourceId, $lastModifiedTimestamp )
 	{
@@ -134,7 +134,7 @@ class FileCache
 			// + if the cache file does not exist, we need the lock to safely create it
 			// + if the cache file does exist, the lock might be abandoned, because another instance
 			//   crashed while writing the cache file or failed to delete the lock file properly
-			//   (i. e. the lock file exists, but is not flocked anymore) - we will try to get the lock
+			//   (i.e. the lock file exists, but is not flocked anymore) - we will try to get the lock
 			//   to create the cache file again
 			$lockHandle = \fopen($lockFile, 'w');
 			if( $lockHandle )
@@ -220,7 +220,7 @@ class FileCache
 	}
 
 	/**
-	 * Destory all handles, release all locks
+	 * Destroy all handles, release all locks
 	 */
 	public function closeAllHandles()
 	{

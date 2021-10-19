@@ -15,9 +15,9 @@ use XAF\file\FileHelper;
  * Zip File Structure:
  *  + n * (<local file header> + <file contents>)
  *  + <central directory>
- *  + <ZIP64 end of directoty record>
- *  + <ZIP64 end of directoty locator>
- *  + <end of directoty record (central directory locator)>
+ *  + <ZIP64 end of directory record>
+ *  + <ZIP64 end of directory locator>
+ *  + <end of directory record (central directory locator)>
  *
  * The central directory duplicates the file metadata which also precedes each file contents chunk
  *
@@ -36,7 +36,7 @@ class ProgressiveZipBuilder
 	/** @var int Unix timestamp of object instance creation - default for file "last modified" timestamps */
 	private $currentTimestamp;
 
-	/** @var array List of hashes containing informatioin on the files added so far */
+	/** @var array List of hashes containing information on the files added so far */
 	private $fileRecords = [];
 
 	/** @var int Byte offset into the archive of the next file that will be added */
@@ -275,7 +275,7 @@ class ProgressiveZipBuilder
 					1,  // Marker for ZIP64 extra block (2 bytes)
 					8   // Size of extra block data (2 bytes) - ATTENTION: ZIP spec calls this field the size of the
 						// extra block but trial and error yields that this is the size of the net data excluding extra
-						// block type and this length field (otherwise some programms fail to extract high files
+						// block type and this length field (otherwise some programs fail to extract high files
 						// beyond 4 GiB properly)
 				)
 				// Offset of the local file header from the start of the ZIP file (8 bytes)

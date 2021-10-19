@@ -59,6 +59,6 @@ class DateTimeHelperDe extends DateTimeHelper
 	protected function getTimeZoneAbbreviation( \DateTime $time )
 	{
 		$result = parent::getTimeZoneAbbreviation($time);
-		return isset(self::$localTimeZoneAbbreviations[$result]) ? self::$localTimeZoneAbbreviations[$result] : $result;
+		return self::$localTimeZoneAbbreviations[$result] ?? $result;
 	}
 }

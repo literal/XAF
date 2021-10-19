@@ -5,7 +5,7 @@ use XAF\web\Response;
 
 /**
  * Transforms rendered response into a series of JavaScript document.write() statements
- * Lines beeginning with ':' will be kept as literal Javascript
+ * Lines beginning with ':' will be kept as literal Javascript
  */
 class JsDocWriteFilter extends OutputFilter
 {

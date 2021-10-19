@@ -4,7 +4,7 @@ namespace XAF\http;
 class AcceptHeaderParser
 {
 	/**
-	 * Parse any HTTP accept header (e. g. "Accept-Language: ...") and return an array of the contained items
+	 * Parse any HTTP accept header (e.g. "Accept-Language: ...") and return an array of the contained items
 	 * ordered by preference ("q=" params)
 	 *
 	 * @param string $header

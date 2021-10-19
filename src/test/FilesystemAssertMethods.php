@@ -7,7 +7,7 @@ use PHPUnit\Framework\Assert;
 /**
  * Helper Trait for using in PHPUnit TestCase classes.
  *
- * Adds assert methods to perform assertions on complex filesystem contents including arbitraary levels
+ * Adds assert methods to perform assertions on complex filesystem contents including arbitrary levels
  * of nested subsolders and assertions on file contents.
  *
  * Common format for expected folder/directory tree contents:

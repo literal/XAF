@@ -16,7 +16,7 @@ use XAF\exception\SystemError;
  *
  * Multiple containers can be cascaded to provide specialized objects visible only to a
  * limited number of client objects while maintaining access to the objects of a parent container
- * which handles a broarder scope.
+ * which handles a broader scope.
  */
 class DefaultContainer implements DiContainer
 {
@@ -177,9 +177,9 @@ class DefaultContainer implements DiContainer
 	public function getAllLocalObjectAliases()
 	{
 		$result = $this->factory->getCreatableObjectAliases();
-		foreach( \array_keys($this->objectRegistry) as $exitentObjectKey )
+		foreach( \array_keys($this->objectRegistry) as $existentObjectKey )
 		{
-			$objectAlias = \explode('.', $exitentObjectKey, 2)[0];
+			$objectAlias = \explode('.', $existentObjectKey, 2)[0];
 			if( !\in_array($objectAlias, $result) )
 			{
 				$result[] = $objectAlias;

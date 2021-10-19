@@ -35,7 +35,7 @@ class SetFieldTokenParser extends Twig_TokenParser
 	}
 
 	/**
-	 * @return array [<Twig_NodeInterface|null>, ...] Null values represent array append operator, i. e. PHP "$array[] = ..."
+	 * @return array [<Twig_NodeInterface|null>, ...] Null values represent array append operator, i.e. PHP "$array[] = ..."
 	 */
 	private function parseFieldKeyChain()
 	{

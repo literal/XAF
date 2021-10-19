@@ -2,7 +2,7 @@
 namespace XAF\markdown;
 
 /**
- * Losely based on html2text, see below
+ * Loosely based on html2text, see below
  *
  * @todo Ordered list and definition list support
  *
@@ -212,7 +212,7 @@ class HtmlToPlaintextConverter
 			$href = \mb_substr($href, 7);
 		}
 
-		// Text contained in href (e. g. URL or URL without "http://") -> no label
+		// Text contained in href (e.g. URL or URL without "http://") -> no label
 		if( \mb_strpos($href, $text) !== false )
 		{
 			return $href . ' ';

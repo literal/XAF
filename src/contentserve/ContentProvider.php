@@ -5,7 +5,7 @@ namespace XAF\contentserve;
  * The CachingContentServer calls an implementation of this interface to access the content to be cached and delivered.
  *
  * The resource ID can really be anything - it is up the the implementation to make sense of it.
- * It could e. g. be a plain ID number or a HTTP query string type combination of multiple fields
+ * It could e.g. be a plain ID number or a HTTP query string type combination of multiple fields
  */
 interface ContentProvider
 {

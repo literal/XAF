@@ -28,7 +28,7 @@ class MessageRenderer
 				'/%([A-Za-z0-9_]*)%/',
 				function( $matches ) use( $params ) {
 					$paramKey = $matches[1];
-					return $paramKey === '' ? '%' : (isset($params[$paramKey]) ? $params[$paramKey] : '?');
+					return $paramKey === '' ? '%' : ($params[$paramKey] ?? '?');
 				},
 				$pattern
 			);

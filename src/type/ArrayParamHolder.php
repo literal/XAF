@@ -18,7 +18,7 @@ class ArrayParamHolder extends ParamHolderBase
 
 	protected function getValue( $key )
 	{
-		return isset($this->params[$key]) ? $this->params[$key] : null;
+		return $this->params[$key] ?? null;
 	}
 
 	public function set( $key, $value )

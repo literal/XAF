@@ -31,7 +31,7 @@ class BackrefReplacer
 		$this->replacePairs = ['$$' => '$'];
 		for( $i = 0; $i < 10; $i++ )
 		{
-			$value = isset($regexMatches[$i]) ? $regexMatches[$i] : '';
+			$value = $regexMatches[$i] ?? '';
 			$this->replacePairs['$' . $i] = $value;
 			$this->replacePairs['$u' . $i] = \ucfirst($value);
 		}
@@ -40,9 +40,9 @@ class BackrefReplacer
 	/**
 	 * Replaces occurrences of $0, $1, $2 etc. and $u0, $u1, $u2 in the subject,
 	 * where $u yields the value with the first letter upper-cased (for use in
-	 * object aliasses or method names, e.g. 'get$u1')
+	 * object aliases or method names, e.g. 'get$u1')
 	 *
-	 * The escapre sequence for a literal dollar sign in the subject is '$$'
+	 * The escape sequence for a literal dollar sign in the subject is '$$'
 	 *
 	 * Uses the values matches from the last successful call to matchPath()
 	 *

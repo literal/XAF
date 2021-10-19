@@ -73,7 +73,7 @@ class FileSenderTest extends TestCase
 	{
 		$this->object->setHttpCacheLifetimeSeconds(666);
 		$this->object->setAllowPublicCaching(true);
-		// We don't actually want to verify the ouput, but do this to suppress the file contents in the PHPUnit output
+		// We don't actually want to verify the output, but do this to suppress the file contents in the PHPUnit output
 		$this->expectOutputString(self::FILE_CONTENTS);
 
 		$this->object->sendFile(self::$fileToBeSent, 'mime/type');

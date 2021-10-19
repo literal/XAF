@@ -101,6 +101,6 @@ class ClientDetectorTest extends TestCase
 
 		$this->assertFalse($this->requestVars->get('quux'));
 		$this->assertTrue($this->requestVars->get('foo'));
-		$this->assertEquals($this->requestVars->get('bar'), 'iPhone');
+		$this->assertEquals('iPhone', $this->requestVars->get('bar'));
 	}
 }

@@ -34,7 +34,7 @@ class LanguageTagValidatorTest extends ValidationTestBase
 			['de_DE', 'de-de'],
 			['en-us'],
 			['es-419'],					// latin american spanish
-			['zh_Hans_HK', 'zh-hans-hk']	// chinese, simplified script, Honkong
+			['zh_Hans_HK', 'zh-hans-hk']	// chinese, simplified script, Hongkong
 		];
 	}
 

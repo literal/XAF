@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ArrayParamHolderTest extends TestCase
 {
-	public function testParamsCanBeSetByPassingHashToContructor()
+	public function testParamsCanBeSetByPassingHashToConstructor()
 	{
 		$object = new ArrayParamHolder(['foo' => 'bar']);
 

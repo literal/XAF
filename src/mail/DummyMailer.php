@@ -80,7 +80,7 @@ class DummyMailer implements Mailer
 	}
 
 	/**
-	 * Every Mail Entry starts with "From ", thats why it has to be escaped. This is a common escaping method
+	 * Every Mail Entry starts with "From ", that's why it has to be escaped. This is a common escaping method
 	 * in mbox-type files.
 	 *
 	 * @param string $text

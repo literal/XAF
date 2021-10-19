@@ -17,11 +17,11 @@ use XAF\helper\LanguageTagHelper;
  * Takes the filter and action definitions defined in the routing table and processed
  * by XAF\web\routing\ControlRouteBuilder.
  *
- * Prevents unexpected termination by calling ignore_user_abort befor any execution.
+ * Prevents unexpected termination by calling ignore_user_abort before any execution.
  * This way incomplete transactions or failure to release locks, write back data etc. is avoided.
  * Output filters will be skipped, though, if the connection is aborted by the client.
  *
- * Contollers that send their output directly to the client (e.g. because they create
+ * Controllers that send their output directly to the client (e.g. because they create
  * progressive output that shall be sent to the client while the controller is running)
  * must check the connection status themselves!
  */
@@ -156,7 +156,7 @@ class Executor
 
 	/**
 	 * @param string $actionDef
-	 * @return array|null The respose from the action method, empty or hash
+	 * @return array|null The response from the action method, empty or hash
 	 */
 	protected function executeAction( $actionDef )
 	{

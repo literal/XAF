@@ -104,7 +104,7 @@ class DefaultExtensionTest extends TwigTestBase
 	}
 
 	/**
-	 * Access to PHP constants is disabled because they may contain sensisive configuration information.
+	 * Access to PHP constants is disabled because they may contain sensitive configuration information.
 	 * Instead the given constant name will be returned as a string
 	 */
 	public function testConstantFunctionIsDisabled()

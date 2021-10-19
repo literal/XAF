@@ -32,7 +32,7 @@ class PgsqlLogReader extends SqlLogReader
 					// Initially get the smallest filter value
 					. ' SELECT MIN(' . $fieldSqlExpression . ') FROM ' . $this->tableName
 				. ' UNION'
-					// Then iterate over all other values, each time taking the smalles value that is greater
+					// Then iterate over all other values, each time taking the smallest value that is greater
 					// than the previous one.
 					. ' SELECT ('
 						. 'SELECT MIN(' . $fieldSqlExpression . ')'
@@ -40,7 +40,7 @@ class PgsqlLogReader extends SqlLogReader
 						. ' WHERE ' . $fieldSqlExpression . ' > currval'
 					. ')'
 				. ' FROM distinct_values'
-					// Interation terminates when NULL is returned
+					// Iteration terminates when NULL is returned
 			. ')'
 			// Must eliminate the final NULL value (or the initial one if there are no values at all)
 			. 'SELECT currval FROM distinct_values WHERE currval IS NOT NULL'

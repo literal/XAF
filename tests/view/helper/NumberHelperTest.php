@@ -44,9 +44,9 @@ class NumberHelperTest extends TestCase
 	/**
      * @dataProvider getNumberTestTuples
      */
-	public function testNumber( $value, $precision, $seperateThousands, $expectedResult )
+	public function testNumber( $value, $precision, $separateThousands, $expectedResult )
 	{
-		$actualResult = $this->object->formatNumber($value, $precision, $seperateThousands);
+		$actualResult = $this->object->formatNumber($value, $precision, $separateThousands);
 		$this->assertEquals($expectedResult, $actualResult);
 	}
 

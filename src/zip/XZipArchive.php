@@ -73,9 +73,7 @@ class XZipArchive
 	{
 		if( $returnValue !== true )
 		{
-			$reason = isset(self::$openErrorMessagesByCode[$returnValue])
-				? self::$openErrorMessagesByCode[$returnValue]
-				: 'unknown error code #' . $returnValue;
+			$reason = self::$openErrorMessagesByCode[$returnValue] ?? 'unknown error code #' . $returnValue;
 			throw new ZipArchiveError($errorMessage . ' (' . $reason . ')', $zipFilePath);
 		}
 	}
@@ -291,7 +289,7 @@ class XZipArchive
 			'Failed to rename file in archive',
 			['pathInZip' => $sourcePathInZip, 'targetPathInZip' => $targetPathInZip]
 		);
-		$modTime = isset($this->modifiedMtimesByPath[$sourcePathInZip]) ? $this->modifiedMtimesByPath[$sourcePathInZip] : null;
+		$modTime = $this->modifiedMtimesByPath[$sourcePathInZip] ?? null;
 		$this->setMtime($sourcePathInZip, null);
 		$this->setMtime($targetPathInZip, $modTime);
 	}
@@ -331,7 +329,7 @@ class XZipArchive
 	{
 		if( $returnValue === false )
 		{
-			$primaryPath = (isset($params['archivePath']) ? $params['archivePath'] : $this->zip->filename)
+			$primaryPath = ($params['archivePath'] ?? $this->zip->filename)
 				. (isset($params['pathInZip']) ? '#' . $params['pathInZip'] : '');
 			unset($params['archivePath'], $params['pathInZip']);
 			$params['ZipArchive::status'] = $this->zip->status;

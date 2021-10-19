@@ -11,7 +11,7 @@ use XAF\type\ParamHolder,
  *
  * Keys are hierarchical dot-separated, e.g. 'main.sub.key' - or null for root
  *
- * Configuration can be hierachically set from different sources (i.e. master config, overridden
+ * Configuration can be hierarchically set from different sources (i.e. master config, overridden
  * by app config, overridden by app instance config)
  */
 class DefaultConfig extends ParamHolderBase implements Config

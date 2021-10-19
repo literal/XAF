@@ -20,7 +20,7 @@ use Twig_ExpressionParser;
  *
  *   default:  {% default foo = 'bar' %} eqivalent to {% set foo = foo | default('bar') %}
  *             Short form for setting a value if it is not yet defined. Useful in a base template that is extended
- *             by some other template. The "global block" (i. e. the area outside any named block) sets a variable,
+ *             by some other template. The "global block" (i.e. the area outside any named block) sets a variable,
  *             with "{% set ... %}", the extending template cannot override it, because its global block is evaluated
  *             first. Using "{% default ... %}" instead of "{% set ... %}" in the base template fixes this.
  *
@@ -150,7 +150,7 @@ class DefaultExtension extends Twig_Extension
 			// binary operators
 			[
 				'beginswith' => [
-					'precedence' => 20, // like other compartison operators in the core extension, e. g. '=='
+					'precedence' => 20, // like other comparison operators in the core extension, e.g. '=='
 					'class' => '\\XAF\\view\\twig\\BeginsWithOperator',
 					'associativity' => Twig_ExpressionParser::OPERATOR_LEFT
 				]

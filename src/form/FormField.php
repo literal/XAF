@@ -9,7 +9,7 @@ class FormField extends FormItem
 	protected $value;
 
 	/**
-	 * @return string to be used for the 'name'-attribute on the HTML input or selct element
+	 * @return string to be used for the 'name'-attribute on the HTML input or select element
 	 */
 	public function getName()
 	{
@@ -17,7 +17,7 @@ class FormField extends FormItem
 	}
 
 	/**
-	 * @return string to be used for the 'id'-attribute on the HTML input or selct element
+	 * @return string to be used for the 'id'-attribute on the HTML input or select element
 	 */
 	public function getId()
 	{
@@ -43,7 +43,7 @@ class FormField extends FormItem
 
 	public function setDefault()
 	{
-		$this->setValue(isset($this->schema['default']) ? $this->schema['default'] : null);
+		$this->setValue($this->schema['default'] ?? null);
 	}
 
 	/**

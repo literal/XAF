@@ -121,7 +121,7 @@ class DateTimeHelperTest extends DateTimeHelperTestBase
 			// with [s]econds
 			['12:00:30 ' . self::TIMEZONE, 's', '12:00:30'],
 
-			// the o'[c]lock option should not be aplied in English
+			// the o'[c]lock option should not be applied in English
 			['12:00 ' . self::TIMEZONE, 'c', '12:00'],
 
 			// with time zone abbreviation (CET/CEST because TZ Europe/Berlin is set in setUp() method)
@@ -313,7 +313,7 @@ class DateTimeHelperTest extends DateTimeHelperTestBase
 	{
 		$actualResult = $this->object->computeAge($input, $options, $referenceValue);
 
-		$this->assertEquals($expectedResult, $actualResult, '', 0.001);
+		$this->assertEqualsWithDelta($expectedResult, $actualResult, 0.001);
 	}
 
 	public function testAgeComputationReferenceDefaultsToCurrentTime()

@@ -60,7 +60,7 @@ class DateTimeHelper
 	protected $timeZone;
 
 	/**
-	 * @param mixed $timeZone The time zone identifier (e. g. 'Europe/Berlin') or a DateTimeZone object, defaults
+	 * @param mixed $timeZone The time zone identifier (e.g. 'Europe/Berlin') or a DateTimeZone object, defaults
 	 *     to the server's time zone (as set in php.ini)
 	 *
 	 * Note that the time zone does not only affect time but also dates: The same absolute point in time may
@@ -90,16 +90,16 @@ class DateTimeHelper
 	}
 
 	/**
-	 * Option characters - specify in a single string in any order, e. g. "cfoaM":
+	 * Option characters - specify in a single string in any order, e.g. "cfoaM":
 	 *
-	 * - a: use "[a]t" (or local equivalent) between date and time, e. g. "yesterday at 13:33"
+	 * - a: use "[a]t" (or local equivalent) between date and time, e.g. "yesterday at 13:33"
 	 *
 	 * In addition, all option characters for formatDate() and formatTime() can be used
 	 *
 	 * @param mixed $value A Unix timestamp, a date string recognised by DateTime::__construct() or a DateTime instance
 	 * @param string $optionString
 	 * @param string $default value to return if $date contains no valid date
-	 * @param mixed $now base for relative formats (e. g. "yesterday"), default is null for current time
+	 * @param mixed $now base for relative formats (e.g. "yesterday"), default is null for current time
 	 * @return string
 	 */
 	public function formatDateAndTime( $value, $optionString = '', $default = '', $now = null )
@@ -119,20 +119,20 @@ class DateTimeHelper
 	}
 
 	/**
-	 * Option characters - specify in a single string in any order, e. g. "rWMo":
+	 * Option characters - specify in a single string in any order, e.g. "rWMo":
 	 *
-	 * - r: return [r]elative date if applicable, e. g. "yesterday"
-	 * - u: [u]pper-case first character if applicable, e. g. "Today" or "On Thursday, 14 July 2011"
-	 * - o: prefix non-relative dates with "[o]n" (or local equivalent), e. g. "on 14/07/2011" but not "on tomorrow"
-	 * - m: use abbreviated [m]onth names instead of numbers, e. g. "14 Jul 2011"
-	 * - M: use full [M]onth names, e. g. "14 July 2011"
-	 * - w: use abbreviated [w]eekday name, e. g. "Mon 14/07/2011"
-	 * - W: use full [w]eekday name, e. g. "Monday 14/07/2011"
+	 * - r: return [r]elative date if applicable, e.g. "yesterday"
+	 * - u: [u]pper-case first character if applicable, e.g. "Today" or "On Thursday, 14 July 2011"
+	 * - o: prefix non-relative dates with "[o]n" (or local equivalent), e.g. "on 14/07/2011" but not "on tomorrow"
+	 * - m: use abbreviated [m]onth names instead of numbers, e.g. "14 Jul 2011"
+	 * - M: use full [M]onth names, e.g. "14 July 2011"
+	 * - w: use abbreviated [w]eekday name, e.g. "Mon 14/07/2011"
+	 * - W: use full [w]eekday name, e.g. "Monday 14/07/2011"
 	 *
 	 * @param mixed $value A Unix timestamp, a date string recognised by DateTime::__construct() or a DateTime instance
 	 * @param string $optionString
 	 * @param string $default value to return if $date contains no valid date
-	 * @param mixed $now base for relative formats (e. g. "yesterday"), default is null for current time
+	 * @param mixed $now base for relative formats (e.g. "yesterday"), default is null for current time
 	 * @return string
 	 */
 	public function formatDate( $value, $optionString = '', $default = '', $now = null )
@@ -177,15 +177,13 @@ class DateTimeHelper
 	{
 		$now = $this->normaliseDateTime($now) ?: $this->now;
 		$dateDifference = $this->getDateDifferenceInDays($date, $now);
-		return isset(static::$words['day_relative'][$dateDifference])
-			? static::$words['day_relative'][$dateDifference]
-			: null;
+		return static::$words['day_relative'][$dateDifference] ?? null;
 	}
 
 	/**
 	 * Compute the difference between two dates in days
 	 *
-	 * Ignores time, i. e. the difference between '2011-07-14 00:00' and '2011-07-13 23:59' is one day,
+	 * Ignores time, i.e. the difference between '2011-07-14 00:00' and '2011-07-13 23:59' is one day,
 	 * even though the the real difference between these two points in time is just one minute.
 	 *
 	 * @param DateTime $date
@@ -194,7 +192,7 @@ class DateTimeHelper
 	 */
 	protected function getDateDifferenceInDays( DateTime $date, DateTime $reference )
 	{
-		// The dates are extracted and put into UTC context to avoid daylight saving time issues (e. g. interval
+		// The dates are extracted and put into UTC context to avoid daylight saving time issues (e.g. interval
 		// becomes n-1 days + 23 hours when reference is DST and date is not)
 		$dateNoonUtc = new DateTime($date->format('Y-m-d') . 'T12:00UTC');
 		$referenceNoonUtc = new DateTime($reference->format('Y-m-d') . 'T12:00UTC');
@@ -263,11 +261,11 @@ class DateTimeHelper
 	}
 
 	/**
-	 * Option characters - specify in a single string in any order, e. g. "cs":
+	 * Option characters - specify in a single string in any order, e.g. "cs":
 	 *
-	 * - s: include [s]econds, e. g. "13:27:49" instead of "13:27"
+	 * - s: include [s]econds, e.g. "13:27:49" instead of "13:27"
 	 * - c: put "o'[c]lock" (or local equivalent like German "Uhr") after time unless 12-hour-AM/PM-format
-	 * - z: add time zone abbeviation, e. g. 'CET' or 'PDT'
+	 * - z: add time zone abbreviation, e.g. 'CET' or 'PDT'
 	 *
 	 * @param mixed $value A Unix timestamp, a date string recognised by DateTime::__construct() or a DateTime instance
 	 * @param string $optionString
@@ -342,19 +340,19 @@ class DateTimeHelper
 	/**
 	 * Build a human readable duration string from a number of seconds
 	 *
-	 * Option characters - specify in a single string in any order, e. g. "mef":
+	 * Option characters - specify in a single string in any order, e.g. "mef":
 	 *
-	 * - H: use [H]ours as leftmost unit (i. e. always output hours even when 0)
-	 * - M: use [M]inutes as leftmost unit (i. e. do not output hours even when duration >= 60 min and do
+	 * - H: use [H]ours as leftmost unit (i.e. always output hours even when 0)
+	 * - M: use [M]inutes as leftmost unit (i.e. do not output hours even when duration >= 60 min and do
 	 *      not switch to seconds when duration < 60 sec)
-	 * - S: use [S]econds as leftmost unit (i. e. do not output minutes or hours even when duration >= 60 sec)
+	 * - S: use [S]econds as leftmost unit (i.e. do not output minutes or hours even when duration >= 60 sec)
 	 *
 	 * - h: use [h]ours as rightmost unit (round to full hours)
 	 * - m: use [m]inutes as rightmost unit (round to full minutes)
 	 * - s: use [s]econds as rightmost unit
 	 *
 	 * - n: [n]umeric only (no units, usually used together with 'H'/'M'/'S' and 'h'/'m'/'s' for consistent output units)
-	 * - e: [e]xtended format, e. g. "3 h 22 min" instead of "3:22 h"
+	 * - e: [e]xtended format, e.g. "3 h 22 min" instead of "3:22 h"
 	 * - a: add [a]bbreviated unit names instead of unit signs
 	 * - f: add [f]ull unit names instead of unit signs
 	 *
@@ -455,7 +453,7 @@ class DateTimeHelper
 	 */
 	protected function formatNumericDurationWithUnit( array $values, $unitFormat )
 	{
-		$majorValue = isset($values['h']) ? $values['h'] : (isset($values['m']) ? $values['m'] : $values['s']);
+		$majorValue = $values['h'] ?? ($values['m'] ?? $values['s']);
 		$majorUnitKey = (isset($values['h']) ? 'h' : (isset($values['m']) ? 'm' : 's'));
 
 		return $this->formatNumericDuration($values)
@@ -513,7 +511,7 @@ class DateTimeHelper
 	 *     'h': in hours
 	 *     'd': in days
 	 * @param mixed|null $now  A Unix timestamp, a date string recognised by DateTime::__construct() or
-	 *     a DateTime instance representing the "now" time the age referrs to (defaults to current time if null)
+	 *     a DateTime instance representing the "now" time the age refers to (defaults to current time if null)
 	 * @return float|null Null if $value contains no valid date/time
 	 */
 	public function computeAge( $value, $optionString = 's', $now = null )
@@ -551,14 +549,14 @@ class DateTimeHelper
 	 * Optionally, the output can be limited to be just the year or a month and year, even if the input
 	 * is more specific.
 	 *
-	 * Option characters - specify in a single string in any order, e. g. "rWMo":
+	 * Option characters - specify in a single string in any order, e.g. "rWMo":
 	 *
-	 * - y: return only the [y]ear regardless of how specific the input value is, e. g. "1969"
-	 * - o: return only the year and m[o]nth regardless of how specific the input value is, e. g. "1969-04"
-	 * - m: use abbreviated [m]onth names instead of numbers, if month is to be shown, e. g. "Jul 2011"
-	 * - M: use full [M]onth names, if month is to be shown, e. g. "July 2011"
+	 * - y: return only the [y]ear regardless of how specific the input value is, e.g. "1969"
+	 * - o: return only the year and m[o]nth regardless of how specific the input value is, e.g. "1969-04"
+	 * - m: use abbreviated [m]onth names instead of numbers, if month is to be shown, e.g. "Jul 2011"
+	 * - M: use full [M]onth names, if month is to be shown, e.g. "July 2011"
 	 *
-	 * @param mixed $value A partial or full date string in ISO format, i. e. 'YYYY', 'YYYY-MM' or 'YYYY-MM-DD',
+	 * @param mixed $value A partial or full date string in ISO format, i.e. 'YYYY', 'YYYY-MM' or 'YYYY-MM-DD',
 	 *      a Unix timestamp or a DateTime instance
 	 * @param string $optionString
 	 * @param string $default value to return if $date contains no valid date

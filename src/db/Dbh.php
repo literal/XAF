@@ -80,7 +80,7 @@ class Dbh
 	}
 
 	/**
-	 * Prepares a statement and executes it, returning the affectd row count
+	 * Prepares a statement and executes it, returning the affected row count
 	 *
 	 * @param string $sql
 	 * @param mixed ... query params can be passed as an array or multiple arguments or a combination thereof

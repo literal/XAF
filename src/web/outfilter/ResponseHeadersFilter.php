@@ -53,8 +53,8 @@ class ResponseHeadersFilter extends OutputFilter
 	}
 
 	/**
-	 * @param string $mimeType e. g. 'text/html'
-	 * @param string|null $encoding e. g. 'utf-8'
+	 * @param string $mimeType e.g. 'text/html'
+	 * @param string|null $encoding e.g. 'utf-8'
 	 */
 	public function setContentType( $mimeType, $encoding = null )
 	{
@@ -96,7 +96,7 @@ class ResponseHeadersFilter extends OutputFilter
 
 	/**
 	 * @param bool $allowPublicCaching Whether to allow caching of the response in public proxy server
-	 *     (only has an effect if caching is allowed at all, i. e. a life time is set)
+	 *     (only has an effect if caching is allowed at all, i.e. a life time is set)
 	 */
 	public function setAllowPublicCaching( $allowPublicCaching )
 	{
@@ -105,7 +105,7 @@ class ResponseHeadersFilter extends OutputFilter
 
 	/**
 	 * Required to signal the browser that an XHR request from script in the context of another domain
-	 * may be executed (or more precisely: that this seerver's response may be passed to that script)
+	 * may be executed (or more precisely: that this server's response may be passed to that script)
 	 * @see http://www.w3.org/TR/cors/
 	 *
 	 * @param string|null $origin Either <protocol>://<domain> or '*' for any domain

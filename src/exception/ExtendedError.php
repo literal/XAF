@@ -17,7 +17,6 @@ class ExtendedError extends Exception implements DebuggableError
 		parent::__construct($message);
 	}
 
-
 	public function addDebugInfo( $key, $value )
 	{
 		$this->debugInfo[$key] = $value;
@@ -26,7 +25,7 @@ class ExtendedError extends Exception implements DebuggableError
 	/**
 	 * Get classification of the error - used for logging
 	 *
-	 * This vlue should depend on the class, not the individual exception.
+	 * This value should depend on the class, not the individual exception.
 	 *
 	 * @return string
 	 */
@@ -34,7 +33,6 @@ class ExtendedError extends Exception implements DebuggableError
 	{
 		return 'exception';
 	}
-
 
 	/**
 	 * @return array

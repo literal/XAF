@@ -36,7 +36,7 @@ class DownloadSender
 
 	/**
 	 * @param bool $allowPublicCaching Whether to allow caching of the response in public proxy server
-	 *     (only has an effect if caching is allowed at all, i. e. a life time is set)
+	 *     (only has an effect if caching is allowed at all, i.e. a life time is set)
 	 */
 	public function setAllowPublicCaching( $allowPublicCaching )
 	{

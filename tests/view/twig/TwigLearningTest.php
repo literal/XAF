@@ -6,7 +6,7 @@ class TwigLearningTest extends TwigTestBase
 {
 	/**
 	 * This test demonstates we can *not* extend a base template and override variables defined in the base template's
-	 * global part (i. e. the part outside any named block)
+	 * global part (i.e. the part outside any named block)
 	 */
 	public function testDerivedTemplateGlobalBlockIsExecutedBeforeParent()
 	{

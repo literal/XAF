@@ -18,7 +18,7 @@ class BoolValidatorTest extends ValidationTestBase
 		$this->object = new BoolValidator;
 	}
 
-	static function getValidBoolians()
+	static function getValidBooleans()
 	{
 		return [
 			[true],
@@ -34,7 +34,7 @@ class BoolValidatorTest extends ValidationTestBase
 	}
 
 	/**
-	 * @dataProvider getValidBoolians
+	 * @dataProvider getValidBooleans
 	 */
 	public function testValid( $input )
 	{
@@ -43,7 +43,7 @@ class BoolValidatorTest extends ValidationTestBase
 		$this->assertValidationResult(true, $result);
 	}
 
-	static function getInvalidBoolians()
+	static function getInvalidBooleans()
 	{
 		return [
 			[null],
@@ -59,7 +59,7 @@ class BoolValidatorTest extends ValidationTestBase
 	}
 
 	/**
-	 * @dataProvider getInvalidBoolians
+	 * @dataProvider getInvalidBooleans
 	 */
 	public function testInvalid( $input )
 	{

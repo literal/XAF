@@ -9,7 +9,7 @@ class RoutingResult
 	/**
 	 * Whether a route for the given request path was found or and no exception was intercepted during routing
 	 * (normally this would be XAF\web\exception\BadRequest instances thrown for invalid request var contents).
-	 * 
+	 *
 	 * Even if the route has not been resolved, there may be a meaningful collection of filters and request
 	 * vars collected when following the routing table entries up to the point where the rest of the request
 	 * path could not be matched anymore.
@@ -26,7 +26,7 @@ class RoutingResult
 	public $basePath = '';
 
 	/**
-	 * Scalar array of aliasses and optional arguments for all input filters to run before the actions
+	 * Scalar array of aliases and optional arguments for all input filters to run before the actions
 	 *
 	 * Array elements are strings:
 	 * - either '<FilterAlias>' (an alias known to the DI container)
@@ -54,7 +54,7 @@ class RoutingResult
 	 * Hash of arbitrary vars extracted from the request URL during routing or set by a filter or an action
 	 * Vars are can be used by filters and are the source for values passed to action methods
 	 *
-	 * @var array 
+	 * @var array
 	 */
 	public $vars = [];
 

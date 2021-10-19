@@ -4,7 +4,7 @@ namespace XAF\persist;
 /**
  * Basic implementation of interface Persistable as an abstract base class
  *
- * Exports/imports all accessible properties, i. e. public and protected
+ * Exports/imports all accessible properties, i.e. public and protected
  * properties of derived classes' objects.
  *
  * If you derive class, make sure all properties that are not to be

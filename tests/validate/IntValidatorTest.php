@@ -30,7 +30,7 @@ class IntValidatorTest extends ValidationTestBase
 		$this->assertValidationResult(-3866, $result);
 	}
 
-	public function testMinusNotAsFirstCharaterIsInvalid()
+	public function testMinusNotAsFirstCharacterIsInvalid()
 	{
 		$result = $this->object->validate('1-3866');
 

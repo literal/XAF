@@ -31,7 +31,7 @@ class FileHelperTest extends TestCase
 
 		$this->object = new FileHelper();
 
-		// See SUT. This disables a special work-around for a PHP bug that does interefe with testing
+		// See SUT. This disables a special work-around for a PHP bug that does interfere with testing
 		if( !defined('DISABLE_DIRECTORY_MOVE_BUG_WORKAROUND') )
 		{
 			define('DISABLE_DIRECTORY_MOVE_BUG_WORKAROUND', true);
@@ -133,7 +133,7 @@ class FileHelperTest extends TestCase
 		$this->assertFalse($result);
 	}
 
-	public function testIsFileReturnsFalsForMissingFile()
+	public function testIsFileReturnsFalseForMissingFile()
 	{
 		$result = $this->object->isFile(self::$workPath . '/missing.file');
 
@@ -247,7 +247,7 @@ class FileHelperTest extends TestCase
 		$this->object->assertDirectoryExists(self::$workPath . '/foo.bar');
 	}
 
-	public function testAssertDirectoryExistsAssertsFileExistanceBeforeDirectoryCheck()
+	public function testAssertDirectoryExistsAssertsFileExistenceBeforeDirectoryCheck()
 	{
 		$this->expectException(\XAF\file\FileError::class);
 		$this->expectExceptionMessage('file or directory not found');
@@ -652,7 +652,7 @@ class FileHelperTest extends TestCase
 
 		$result = $this->object->getFileContents(self::$workPath . '/file.ext');
 
-		$this->assertEquals($result, 'abc');
+		$this->assertEquals('abc', $result);
 	}
 
 	public function testOutputFile()

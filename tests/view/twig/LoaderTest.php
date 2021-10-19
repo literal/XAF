@@ -18,7 +18,7 @@ class LoaderTest extends TwigTestBase
 		return new Loader($this->templatePath, null, '.twig');
 	}
 
-	public function testTemplateExistensionIsAddedWhenRequestedTemplateHasNone()
+	public function testTemplateExtensionIsAddedWhenRequestedTemplateHasNone()
 	{
 		$this->setupTemplate('template.twig', 'foo');
 
@@ -27,7 +27,7 @@ class LoaderTest extends TwigTestBase
 		$this->assertEquals('foo', $result);
 	}
 
-	public function testTemplateExistensionIsNotAddedWhenRequestedTemplateHasIt()
+	public function testTemplateExtensionIsNotAddedWhenRequestedTemplateHasIt()
 	{
 		$this->setupTemplate('template.twig', 'foo');
 
@@ -36,7 +36,7 @@ class LoaderTest extends TwigTestBase
 		$this->assertEquals('foo', $result);
 	}
 
-	public function testTemplateExistensionIsAlsoAddedForInternalTemplateReferences()
+	public function testTemplateExtensionIsAlsoAddedForInternalTemplateReferences()
 	{
 		$this->setupTemplate('template.twig', "{% extends 'parent' %}"); // No '.twig' here!
 		$this->setupTemplate('parent.twig', "{% include 'include' %}"); // No '.twig' here!

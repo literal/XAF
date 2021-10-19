@@ -53,7 +53,7 @@ class RequestRouterTest extends TestCase
 	}
 
 	/**
-	 * A partial routing result collected before an error occurs is often useful - e. g. certain request
+	 * A partial routing result collected before an error occurs is often useful - e.g. certain request
 	 * vars like the ones for language or content-type may be of interest for the error handling
 	 */
 	public function testPartialRoutingResultIsAvailableAfterRoutingError()
@@ -172,7 +172,7 @@ class RequestRouterTest extends TestCase
 		$this->init([
 			'routes' => [
 				'/inpath(\\d+)' => [
-					// routing should *not* stop here because of the'contine' flag
+					// routing should *not* stop here because of the 'continue' flag
 					'continue' => true,
 					'actions' => 'action1',
 				],
@@ -938,14 +938,14 @@ class RequestRouterTest extends TestCase
 			'routes' => [
 				'/inpath' => [
 					'reset' => 'actions',
-					'actions' => 'replacment_action'
+					'actions' => 'replacement_action'
 				]
 			]
 		]);
 
 		$result = $this->router->resolveRoute('GET', '/inpath');
 
-		$this->assertEquals(['replacment_action'], $result->actions);
+		$this->assertEquals(['replacement_action'], $result->actions);
 	}
 
 	public function testVarsReset()

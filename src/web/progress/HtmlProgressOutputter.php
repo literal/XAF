@@ -11,7 +11,7 @@ use XAF\progress\DebugInfo;
 use XAF\progress\Tick;
 
 /**
- * Recieves progress messages from services performing complex, lengthy tasks and
+ * Receives progress messages from services performing complex, lengthy tasks and
  * forwards them to the progress view for immediate, progressive output to the client.
  */
 class HtmlProgressOutputter implements Outputter

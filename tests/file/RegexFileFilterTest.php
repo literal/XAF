@@ -27,8 +27,8 @@ class RegexFileFilterTest extends TestCase
 
 			['foo.mp3', '/.*/', true], // matches all files
 
-			['foo/bar.mp3', '/.*foo.*/', true], // matches filename
-			['bar/foo.mp3', '/.*foo.*/', true], // matches foldername
+			['foo/bar.mp3', '/.*foo.*/', true], // matches file name
+			['bar/foo.mp3', '/.*foo.*/', true], // matches folder name
 		];
 	}
 

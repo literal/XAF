@@ -28,7 +28,7 @@ class LanguageMatcherTest extends TestCase
 			// null shall be returned if there is no available language
 			[['de-de'], [], null],
 
-			// When several avalilable languages do match, the most specific match shall win:
+			// When several available languages do match, the most specific match shall win:
 			// 'de-de' vs. 'de-at' is counted as *two* differences (from the common part 'de')
 			// while 'de-de' vs. 'de' only counts as one difference and is thus a better match
 			[['de-de'], ['de-at', 'de'], 'de'],

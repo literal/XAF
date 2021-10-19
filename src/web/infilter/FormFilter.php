@@ -28,7 +28,7 @@ class FormFilter extends InputFilter
 	 * @param Request $request
 	 * @param ParamHolder $requestVars
 	 * @param DiContainer $diContainer
-	 * @param string|null $objectQualifier Usually the language tag written as an object qualifier, e. g. 'de.de'
+	 * @param string|null $objectQualifier Usually the language tag written as an object qualifier, e.g. 'de.de'
 	 */
 	public function __construct( Request $request, ParamHolder $requestVars, DiContainer $diContainer, $objectQualifier )
 	{

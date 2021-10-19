@@ -10,11 +10,11 @@ use XAF\exception\RequestError;
  * (display error in user space instead).
  *
  * Example use cases:
- * - Recived POST form data is missing required fields
- * - A GET parameter from a link (i. e. not entered by the user) is not expected data type - e. g.
+ * - Received POST form data is missing required fields
+ * - A GET parameter from a link (i.e. not entered by the user) is not expected data type - e.g.
  *   a page number parameter coded into forward/back links is not numeric
  * - A request is made which does not make sense in relation the the current state of the user session -
- *   e. g. a shop's checkout page is called with an empty shopping cart
+ *   e.g. a shop's checkout page is called with an empty shopping cart
  */
 class BadRequest extends RequestError
 {

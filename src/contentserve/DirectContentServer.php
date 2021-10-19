@@ -4,7 +4,7 @@ namespace XAF\contentserve;
 use XAF\http\ResponseHeaderSetter;
 
 /**
- * This server retieves the actual content from an object implementing the ContentProvider interface.
+ * This server reteives the actual content from an object implementing the ContentProvider interface.
  *
  * The resource IDs used to specify the content can really be anything. From simple integers to complete
  * URIs or file paths. It is up to the content provider object to make sense of the IDs.

@@ -28,7 +28,7 @@ class Request
 	 */
 	public function getFullRequestUrl()
 	{
-		return \rtrim($this->getBaseUrl(), '/') . (isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/');
+		return \rtrim($this->getBaseUrl(), '/') . ($_SERVER['REQUEST_URI'] ?? '/');
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Request
 	 */
 	public function getRemoteIp()
 	{
-		return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null;
+		return $_SERVER['REMOTE_ADDR'] ?? null;
 	}
 
 	/**
@@ -101,7 +101,7 @@ class Request
 	 */
 	public function getHttpAuthUserName()
 	{
-		return isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : null;
+		return $_SERVER['PHP_AUTH_USER'] ?? null;
 	}
 
 	/**
@@ -128,7 +128,7 @@ class Request
 	 */
 	public function getPostField( $key, $default = null )
 	{
-		return isset($_POST[$key]) ? $_POST[$key] : $default;
+		return $_POST[$key] ?? $default;
 	}
 
 	/**
@@ -146,7 +146,7 @@ class Request
 	 */
 	public function getQueryParam( $key, $default = null )
 	{
-		return isset($_GET[$key]) ? $_GET[$key] : $default;
+		return $_GET[$key] ?? $default;
 	}
 
 	/**
@@ -169,7 +169,7 @@ class Request
 	 */
 	public function getCookie( $key, $default = null )
 	{
-		return isset($_COOKIE[$key]) ? $_COOKIE[$key] : $default;
+		return $_COOKIE[$key] ?? $default;
 	}
 
 	/**

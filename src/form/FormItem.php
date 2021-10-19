@@ -46,7 +46,7 @@ abstract class FormItem
 
 	/**
 	 * Set a named multi-purpose parameter for use at output time,
-	 * e. g. a hash of permitted keys/values for a selection field
+	 * e.g. a hash of permitted keys/values for a selection field
 	 *
 	 * @param string $key
 	 * @param mixed $value
@@ -64,7 +64,7 @@ abstract class FormItem
 	 */
 	public function getParam( $key )
 	{
-		return isset($this->params[$key]) ? $this->params[$key] : null;
+		return $this->params[$key] ?? null;
 	}
 
 	/**

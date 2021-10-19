@@ -1406,7 +1406,7 @@ class MarkdownParser
 	public function parseSpan( $str )
 	{
 		#
-		# Take the string $str and parse it into tokens, hashing embeded HTML,
+		# Take the string $str and parse it into tokens, hashing embedded HTML,
 		# escaped characters and handling code spans.
 		#
 		$output = '';
@@ -1440,8 +1440,8 @@ class MarkdownParser
 		while( 1 )
 		{
 			#
-			# Each loop iteration seach for either the next tag, the next
-			# openning code span marker, or the next escaped character.
+			# Each loop iteration search for either the next tag, the next
+			# opening code span marker, or the next escaped character.
 			# Each token is then passed to handleSpanToken.
 			#
 			$parts = preg_split($span_re, $str, 2, PREG_SPLIT_DELIM_CAPTURE);
@@ -1499,7 +1499,7 @@ class MarkdownParser
 		return preg_replace('/^(\t|[ ]{1,' . $this->tab_width . '})/m', '', $text);
 	}
 	# String length function for detab. `_initDetab` will create a function to
-	# hanlde UTF-8 if the default function does not exist.
+	# handle UTF-8 if the default function does not exist.
 	var $utf8_strlen = 'mb_strlen';
 
 	public function detab( $text )
@@ -1507,7 +1507,7 @@ class MarkdownParser
 		#
 		# Replace tabs with the appropriate amount of space.
 		#
-		# For each line we separate the line in blocks delemited by
+		# For each line we separate the line in blocks delimited by
 		# tab characters. Then we reconstruct every line by adding the
 		# appropriate number of space between each blocks.
 

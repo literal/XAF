@@ -40,9 +40,7 @@ class MimeTypeResolver
 	public function getMimeTypeFromFileName( $fileName )
 	{
 		$extension = \strtolower(FileNameHelper::extractExtension($fileName));
-		return isset($this->extensionToMimeTypeMap[$extension])
-			? $this->extensionToMimeTypeMap[$extension]
-			: 'application/octet-stream';
+		return $this->extensionToMimeTypeMap[$extension] ?? 'application/octet-stream';
 	}
 
 	/**
@@ -51,8 +49,6 @@ class MimeTypeResolver
 	 */
 	public function getDefaultFileNameExtensionFromMimeType( $mimeType )
 	{
-		return isset($this->mimeTypeToExtensionMap[\strtolower($mimeType)])
-			? $this->mimeTypeToExtensionMap[\strtolower($mimeType)]
-			: null;
+		return $this->mimeTypeToExtensionMap[\strtolower($mimeType)] ?? null;
 	}
 }

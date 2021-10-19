@@ -206,8 +206,8 @@ abstract class SqlLogReader
 				$this->applySearchFilter(
 					$searchPhraseKey,
 					$filters[$searchPhraseKey],
-					isset($expressionsByMatchType['search']) ? $expressionsByMatchType['search'] : [],
-					isset($expressionsByMatchType['lookup']) ? $expressionsByMatchType['lookup'] : [],
+                    $expressionsByMatchType['search'] ?? [],
+                    $expressionsByMatchType['lookup'] ?? [],
 					$query
 				);
 			}

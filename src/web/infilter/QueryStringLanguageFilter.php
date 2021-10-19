@@ -35,7 +35,7 @@ class QueryStringLanguageFilter extends LanguageFilterBase
 	{
 		parent::setDefaultParams();
 
-		// Whether to issue a HTTP redicet for request without a valid language tag (when a query param is required
+		// Whether to issue an HTTP redirect for request without a valid language tag (when a query param is required
 		// at all, i.e. when there are multiple languages available or the param 'forceQueryParam' is set)
 		$this->setParam('redirect', true);
 	}

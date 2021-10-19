@@ -499,7 +499,7 @@ class DefaultFactoryTest extends TestCase
 	public function testCreatableObjectAliases()
 	{
 		$this->object->setObjectCreationMap([
-			// B beore A to verify map order is kept
+			// B before A to verify map order is kept
 			'aliasB' => ['class' => 'MyClassB'],
 			'aliasA' => ['class' => 'MyClassA'],
 			// Qualifiers should be ignored and 'aliasA' be returned only once

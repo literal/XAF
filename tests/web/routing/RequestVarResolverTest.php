@@ -81,7 +81,7 @@ class RequestVarResolverTest extends TestCase
 		$this->assertEquals('postValue', $result);
 	}
 
-	public function testPostFieldNameCanBeExplicitlySpecifiedInParenhesis()
+	public function testPostFieldNameCanBeExplicitlySpecifiedInParenthesis()
 	{
 		$this->object->resolveVar('varName', 'POSTVAL(fieldName)');
 
@@ -98,7 +98,7 @@ class RequestVarResolverTest extends TestCase
 		$this->assertEquals('getValue', $result);
 	}
 
-	public function testGetFieldNameCanBeExplicitlySpecifiedInParenhesis()
+	public function testGetFieldNameCanBeExplicitlySpecifiedInParenthesis()
 	{
 		$this->object->resolveVar('varName', 'GETVAL(fieldName)');
 
@@ -128,7 +128,7 @@ class RequestVarResolverTest extends TestCase
 		$this->assertEquals('getValue', $result);
 	}
 
-	public function testRequestFieldNameCanBeExplicitlySpecifiedInParenhesis()
+	public function testRequestFieldNameCanBeExplicitlySpecifiedInParenthesis()
 	{
 		$this->object->resolveVar('varName', 'REQUESTVAL(fieldName)');
 
@@ -146,7 +146,7 @@ class RequestVarResolverTest extends TestCase
 		$this->assertEquals('cookieValue', $result);
 	}
 
-	public function testCookieNameCanBeExplicitlySpecifiedInParenhesis()
+	public function testCookieNameCanBeExplicitlySpecifiedInParenthesis()
 	{
 		$this->object->resolveVar('varName', 'COOKIE(cookieName)');
 

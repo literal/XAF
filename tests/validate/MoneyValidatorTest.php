@@ -68,7 +68,7 @@ class MoneyValidatorTest extends ValidationTestBase
 			// Missing currency element (and no default currency)
 			['missingCurrency', ['amount' => '1.50']],
 
-			// Currency does not constist of three letters
+			// Currency does not consist of three letters
 			['invalidCurrency', ['amount' => '1.50', 'currency' => 'FF']],
 			['invalidCurrency', ['amount' => '1.50', 'currency' => '3XX']],
 		];

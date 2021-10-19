@@ -87,7 +87,7 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 		$filters = [];
 		foreach( $this->filterMap as $filterName => $def )
 		{
-			$options = isset($def[2]) ? $def[2] : [];
+			$options = $def[2] ?? [];
 			$filters[$filterName] =
 				new Twig_Filter_Method($this, 'getHelper(\'' . $def[0] . '\')->' . $def[1], $options);
 		}
@@ -99,7 +99,7 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 		$functions = [];
 		foreach( $this->functionMap as $functionName => $def )
 		{
-			$options = isset($def[2]) ? $def[2] : [];
+			$options = $def[2] ?? [];
 			$functions[$functionName] =
 				new Twig_Function_Method($this, 'getHelper(\'' . $def[0] . '\')->' . $def[1], $options);
 		}
@@ -112,7 +112,7 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 		foreach( $this->globalMap as $globalName => $def )
 		{
 			$helper = $this->getHelper($def[0]);
-			$methodName = isset($def[1]) ? $def[1] : null;
+			$methodName = $def[1] ?? null;
 			$globals[$globalName] = $methodName ? $helper->$methodName() : $helper;
 		}
 		return $globals;

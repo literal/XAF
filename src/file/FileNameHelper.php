@@ -15,7 +15,7 @@ class FileNameHelper
 	}
 
 	/**
-	 * Extract file name from full file path for display purrposes and similar, forcing the name into UTF-8 encoding.
+	 * Extract file name from full file path for display purposes and similar, forcing the name into UTF-8 encoding.
 	 *
 	 * @param string $file
 	 * @return string

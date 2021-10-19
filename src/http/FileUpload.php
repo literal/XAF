@@ -72,7 +72,7 @@ class FileUpload
 
 			case \UPLOAD_ERR_FORM_SIZE:
 				// As it is *so* useless to limit the size via a form element, we will not support
-				// it and refuse to handle avioltion of the limit
+				// it and refuse to handle a violation of the limit
 				throw new SystemError('soft upload limit MAX_FILE_SIZE exceeded - feature not supported');
 
 			case \UPLOAD_ERR_NO_TMP_DIR:

@@ -16,7 +16,7 @@ class DefaultValidatorTest extends TestCase
 		$this->object = new DefaultValidator();
 	}
 
-	public function testNonEmptyValueIsResturnedUnchanged()
+	public function testNonEmptyValueIsReturnedUnchanged()
 	{
 		$validationResult = $this->object->validate('value', 'defaults');
 

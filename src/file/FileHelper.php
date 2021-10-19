@@ -173,7 +173,7 @@ class FileHelper
 
 	/**
 	 * Delete a file or directory including all of its contents and throw no exception if the file/dir
-	 * dioes not exist
+	 * does not exist
 	 *
 	 * @param string $fileOrDirectory
 	 */
@@ -306,7 +306,7 @@ class FileHelper
 	public function move( $sourceFile, $destinationFile )
 	{
 		// Workaround for PHP bug https://bugs.php.net/bug.php?id=54097 (renaming folders across volumes fails on Linux)
-		// The constatnt for disabling the workaround is for making tests pass.
+		// The constant for disabling the workaround is for making tests pass.
 		if( \is_dir($sourceFile) && $this->isLinux() && !defined('DISABLE_DIRECTORY_MOVE_BUG_WORKAROUND') )
 		{
 			$command = 'mv ' . \escapeshellarg($sourceFile) . ' ' . \escapeshellarg($destinationFile) . ' 2>&1';
@@ -427,7 +427,7 @@ class FileHelper
 
 	/**
 	 * @param string $directory
-	 * @return float Number of availabale bytes of storage space in the volume that $directory is contained in
+	 * @return float Number of available bytes of storage space in the volume that $directory is contained in
 	 */
 	public function getFreeBytesBelow( $directory )
 	{

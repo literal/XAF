@@ -106,7 +106,7 @@ class DoctrineTestHelper
 		}
 		else
 		{
-			// an EM will be closed when an exception occurrs during flush,
+			// an EM will be closed when an exception ocurrs during flush,
 			// it cannot be reopened, so a new EM must be created
 			self::$em = null;
 		}

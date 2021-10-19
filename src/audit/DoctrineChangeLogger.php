@@ -15,7 +15,7 @@ use XAF\log\audit\StructuredAuditLogEntry;
  * Format of generated log entry data (log format key "ocs-v1", "ocs" stands for "object changeset"):
  * [
  *     // For a new child entity or a new reference to an existing foreign entity:
- *     [<name>, '+', <object-desciptor>},
+ *     [<name>, '+', <object-descriptor>},
  *
  *     // For a deleted child entity or a removed reference to an existing foreign entity:
  *     [<name>, '-', <object-desciptor>],
@@ -156,7 +156,7 @@ class DoctrineChangeLogger
 			$oldValueExport = $this->exportFieldValue($oldValue);
 			$newValueExport = $this->exportFieldValue($newValue);
 
-			// Sometimes Doctrine has false positives for changes, e. g. for DateTime objects replaced by
+			// Sometimes Doctrine has false positives for changes, e.g. for DateTime objects replaced by
 			// new DateTime objects with equivalent value. Comparing the exported values reveals these cases.
 			if( $oldValueExport === $newValueExport )
 			{
@@ -211,7 +211,7 @@ class DoctrineChangeLogger
 		unset($this->changeSets[$oid]);
 
 		$owner = $changeSet['owner'];
-		$ownerFieldName = isset($changeSet['mapAs']) ? $changeSet['mapAs'] : '';
+		$ownerFieldName = $changeSet['mapAs'] ?? '';
 
 		if( $changeSet['op'] == 'del' )
 		{
@@ -425,7 +425,7 @@ class DoctrineChangeLogger
 	private function getEntityIdString( $entity )
 	{
 		// ATTENTION: This causes an "undefined index" warning in the UOW for new entities (scheduled for insertion)
-		// whith DBMS where the ID is generated on insert (as opposed to using a sequence in advance) because
+		// with DBMS where the ID is generated on insert (as opposed to using a sequence in advance) because
 		// the UOW looks for the ID in its ID map without an "isset()" check.
 		// Make sure to return an "id" field in the entity's "__getAuditInfo()" method to avoid this.
 		return \implode(':', $this->em->getUnitOfWork()->getEntityIdentifier($entity));

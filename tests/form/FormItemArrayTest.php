@@ -62,7 +62,7 @@ class FormItemArrayTest extends TestCase
 		$this->object->setValue(['foo', 'bar']);
 		$this->object->setValue(null);
 
-		$this->assertEquals(0, \count($this->object));
+		$this->assertCount(0, $this->object);
 	}
 
 	public function testThereAreNoItemsAfterSettingScalarValue()
@@ -74,7 +74,7 @@ class FormItemArrayTest extends TestCase
 		$this->object->setValue(['foo', 'bar']);
 		$this->object->setValue('foo');
 
-		$this->assertEquals(0, \count($this->object));
+		$this->assertCount(0, $this->object);
 	}
 
 	public function testMissingArraySchemaElementThrowsException()
@@ -102,7 +102,7 @@ class FormItemArrayTest extends TestCase
 
 		$this->object->setDefault();
 
-		$this->assertEquals(0, \count($this->object));
+		$this->assertCount(0, $this->object);
 	}
 
 	public function testKeysAreDiscardedWhenValuesAreSet()

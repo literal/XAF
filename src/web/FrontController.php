@@ -76,7 +76,7 @@ class FrontController
 	}
 
 	/**
-	 * @param string $requestMethod HTTP request method, e. g. 'GET' or 'POST'
+	 * @param string $requestMethod HTTP request method, e.g. 'GET' or 'POST'
 	 * @param string $requestPath URL-path from the HTTP request
 	 */
 	public function handleHttpRequest( $requestMethod, $requestPath )
@@ -119,7 +119,7 @@ class FrontController
 	/**
 	 * Request vars and input filters are collected/called even if routing fails. This is to:
 	 * - populate the 'language' request var to be able to display the error page in the appropriate language
-	 * - execute auth filters that may throw an exception when access is denied - else we would leak wheather a
+	 * - execute auth filters that may throw an exception when access is denied - else we would leak weather a
 	 *   path exists or not inside a privileged part of the application (it could be tested from the outside
 	 *   whether a certain path leads to "not found" or "access denied")
 	 *
@@ -223,7 +223,7 @@ class FrontController
 
 	protected function shutDown()
 	{
-		// finishing the HTTP response before potentially time-consuming shutdown event (e. g. causing
+		// finishing the HTTP response before potentially time-consuming shutdown event (e.g. causing
 		// Doctrine flushing entities to DB) makes the app feel more responsive
 		$this->closeHttpResponse();
 		$this->eventDispatcher->triggerEvent('shutdown');

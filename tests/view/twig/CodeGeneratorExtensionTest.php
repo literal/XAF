@@ -6,7 +6,7 @@ use TwigTestBase;
 require_once __DIR__ . '/TwigTestBase.php';
 
 /**
- * Somke test (filters present and callable) only, functionality is tested in the helper test
+ * Smoke test (filters present and callable) only, functionality is tested in the helper test
  *
  * @covers \XAF\view\twig\CodeGeneratorExtension
 

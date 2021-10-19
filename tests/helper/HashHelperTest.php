@@ -72,7 +72,7 @@ class HashHelperTest extends TestCase
 		$this->assertEquals(['targetFoo' => 1], $result);
 	}
 
-	public function testTransformByMapIgnoresUmappedFields()
+	public function testTransformByMapIgnoresUnmappedFields()
 	{
 		$result = HashHelper::transformByMap(['foo' => 1, 'bar' => 2], ['foo' => 'foo']);
 

@@ -86,10 +86,10 @@ class RequestVarResolver
 			$matches
 		);
 		return [
-			'source' => isset($matches[1]) && $matches[1] !== '' ? $matches[1] : null,
-			'sourceField' => isset($matches[2]) && $matches[2] !== '' ? $matches[2] : null,
-			'value' => isset($matches[3]) ? $matches[3] : '',
-			'rule' => isset($matches[4]) && $matches[4] !== '' ? $matches[4] : null,
+            'source' => isset($matches[1]) && $matches[1] !== '' ? $matches[1] : null,
+            'sourceField' => isset($matches[2]) && $matches[2] !== '' ? $matches[2] : null,
+            'value' => $matches[3] ?? '',
+            'rule' => isset($matches[4]) && $matches[4] !== '' ? $matches[4] : null,
 		];
 	}
 

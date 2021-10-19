@@ -6,7 +6,7 @@ namespace XAF\helper;
  *
  * IMPORTANT WINDOWS NOTE:
  *     Argument escaping on Windows is rather unpredictable - the Windows command shell (cmd.exe)
- *     passes double quoted arguments to the invoked application in raw format, i. e. with the surrounding
+ *     passes double quoted arguments to the invoked application in raw format, i.e. with the surrounding
  *     quotes and all contained escape sequences. So it depends on the actual application whether an escape
  *     sequence like '\"' will be interpreted or not.
  */

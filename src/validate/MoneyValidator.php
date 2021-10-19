@@ -13,7 +13,7 @@ class MoneyValidator extends NumberValidator
 	{
 		if( !($value instanceof Money) )
 		{
-			$amount = \is_array($value) ? (isset($value['amount']) ? $value['amount'] : null) : $value;
+			$amount = \is_array($value) ? ($value['amount'] ?? null) : $value;
 			$amountResult = parent::validate($amount, $minAmount);
 			if( $amountResult->errorKey !== null )
 			{

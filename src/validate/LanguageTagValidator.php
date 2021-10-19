@@ -2,7 +2,7 @@
 namespace XAF\validate;
 
 /**
- * For language tags, consisting of one ore more grups of letters or numbers separated by dashes.
+ * For language tags, consisting of one or more groups of letters or numbers separated by dashes.
  * The tags may provide information beyond the actual language, e.g. a culture/territory which can determine
  * how numbers, dates etc. are formatted, a script type and so on.
  *

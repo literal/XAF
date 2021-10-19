@@ -4,7 +4,7 @@ namespace XAF\web\exception;
 use Exception;
 
 /**
- * Not an error but thrown to trigger an internal redirect, i. e. another routing pass
+ * Not an error but thrown to trigger an internal redirect, i.e. another routing pass
  */
 class InternalRedirect extends Exception
 {

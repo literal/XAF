@@ -6,12 +6,12 @@ use PHPUnit\Framework\TestCase;
 use XAF\file\FileHelper;
 
 /**
- * This test is sketchy because cocurrent cache access - the most important aspect of the implementation - cannot be
+ * This test is sketchy because concurrent cache access - the most important aspect of the implementation - cannot be
  * tested with PhpUnit.
  *
  * In particular it cannot be tested that:
  * - the cache will wait for a locked entry to be released by another process which is writing to it
- * - the cache will capture a stale lock, e. g. when the locking process has crashed (after which the lock file
+ * - the cache will capture a stale lock, e.g. when the locking process has crashed (after which the lock file
  *   still exists, but the flock on it should be released)
  *
  * @covers \XAF\contentserve\FileCache

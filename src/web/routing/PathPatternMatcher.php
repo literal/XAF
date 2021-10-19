@@ -18,7 +18,7 @@ class PathPatternMatcher
 	{
 		$this->pathSeparator = $pathSeparator;
 
-		// make sure path separaor and regex delimiter are not the same character
+		// make sure path separator and regex delimiter are not the same character
 		if( $this->pathSeparator == '#' )
 		{
 			$this->regexDelimiter = '/';
@@ -79,7 +79,7 @@ class PathPatternMatcher
 	 */
 	public function getMatchedPathFragment()
 	{
-		return isset($this->regexMatches[0]) ? $this->regexMatches[0] : null;
+		return $this->regexMatches[0] ?? null;
 	}
 
 	/**

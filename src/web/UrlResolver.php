@@ -7,7 +7,7 @@ interface UrlResolver
 	 * Set a name/value pair that needs to be added to the query string of all link URLs that
 	 * point to other pages.
 	 *
-	 * Used for e. g.:
+	 * Used for e.g.:
 	 * - a session ID param in case a client does not support cookies
 	 * - a language code to be carried along from page to page
 	 *
@@ -129,7 +129,7 @@ interface UrlResolver
 	public function buildAbsHref( $pagePath, array $params = [] );
 
 	/**
-	 * Extract internal page path from a raw request URL path, i. e. strip the root path from the beginning
+	 * Extract internal page path from a raw request URL path, i.e. strip the root path from the beginning
 	 * of $urlPath (if a root path is defined).
 	 *
 	 * @param string $urlPath

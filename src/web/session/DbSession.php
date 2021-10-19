@@ -25,7 +25,7 @@ abstract class DbSession implements Session
 	/** @var int initial number of microseconds to sleep before retry when session lock could not be acquired */
 	protected $lockRetryUsec = 25000; // 25ms = 0.025 sec
 
-	/** @var int number of times to retry aquisition of a session lock before throwing an exception */
+	/** @var int number of times to retry acquisition of a session lock before throwing an exception */
 	protected $maxLockRetryCount = 100;
 
 	/** @var int DB-PK in der Session-Tabelle */
@@ -66,7 +66,7 @@ abstract class DbSession implements Session
 
 	/**
 	 * @param string $token
-	 * @return null|bool|array null if not found, false if locking not acquired, a hash of the retrieved DB record otherwiese
+	 * @return null|bool|array null if not found, false if locking not acquired, a hash of the retrieved DB record otherwise
 	 */
 	abstract protected function dbTryReadAndLock( $token );
 
@@ -289,7 +289,7 @@ abstract class DbSession implements Session
 	public function getData( $key )
 	{
 		$this->assertOpen();
-		return isset($this->data[$key]) ? $this->data[$key] : null;
+		return $this->data[$key] ?? null;
 	}
 
 	/**
@@ -320,7 +320,7 @@ abstract class DbSession implements Session
 	public function getFlash( $key )
 	{
 		$this->assertOpen();
-		return isset($this->flashDataIn[$key]) ? $this->flashDataIn[$key] : null;
+		return $this->flashDataIn[$key] ?? null;
 	}
 
 	public function close()

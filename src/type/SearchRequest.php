@@ -6,7 +6,7 @@ namespace XAF\type;
  */
 class SearchRequest
 {
-	/** @var the original serach phrase */
+	/** @var string the original search phrase */
 	private $phrase;
 
 	/** @var array groups/words the search phase was split into */
@@ -80,9 +80,9 @@ class SearchRequest
 	}
 
 	/**
-	 * Return Perl regex pattern for *any* of the search terms, i. e. the pattern will match all occurrences of
+	 * Return Perl regex pattern for *any* of the search terms, i.e. the pattern will match all occurrences of
 	 * any of the search words in a subject. Intended for finding search words in retrieved search results
-	 * (e. g. for highlighting).
+	 * (e.g. for highlighting).
 	 *
 	 * @return string|null
 	 */

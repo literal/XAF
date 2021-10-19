@@ -46,6 +46,6 @@ class StringHelper
 	{
 		\preg_match('/^([' . $validCharPregClass . ']*)/u', $text, $matches);
 		// No match if the input is invalid UTF-8 - just discard whole string then
-		return isset($matches[1]) ? $matches[1] : '';
+		return $matches[1] ?? '';
 	}
 }

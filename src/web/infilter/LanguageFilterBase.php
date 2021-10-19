@@ -26,7 +26,7 @@ abstract class LanguageFilterBase extends InputFilter
 
 	protected function setDefaultParams()
 	{
-		// Default name of the query param used for forwarding the langage in outgoing links, set empty to
+		// Default name of the query param used for forwarding the language in outgoing links, set empty to
 		// prevent setting of the automatic param
 		$this->setParam('queryParam', 'lang');
 
@@ -61,7 +61,7 @@ abstract class LanguageFilterBase extends InputFilter
 	 */
 	protected function getDefaultLanguage()
 	{
-		return isset($this->availableLanguages[0]) ? $this->availableLanguages[0] : null;
+		return $this->availableLanguages[0] ?? null;
 	}
 
 	/**

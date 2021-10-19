@@ -4,7 +4,7 @@ namespace XAF\form;
 use XAF\exception\SystemError;
 
 /**
- * A collection of form items of the same type indexed by keys. Keys are dynamic, i. e. not defined by the schema
+ * A collection of form items of the same type indexed by keys. Keys are dynamic, i.e. not defined by the schema
  * but part of the data.
  */
 class FormItemHash extends FormItemCollection

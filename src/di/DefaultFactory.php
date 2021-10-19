@@ -28,7 +28,7 @@ class DefaultFactory implements Factory
 	}
 
 	/**
-	 * The subtle difference between object keys and aliasses:
+	 * The subtle difference between object keys and aliases:
 	 *
 	 *   The alias is the string under which an object is defined in the map.
 	 *   The key is an object identifier requested from the outside.
@@ -50,13 +50,13 @@ class DefaultFactory implements Factory
 	 *   - 'Translator' and a qualifier of 'de.ch' passed to the translator's constructor
 	 *   - 'Translator.de' and a qualifier of 'ch' passed to the translator's constructor
 	 *   - 'Translator.de.ch' and no qualifier passed to the translator's constructor
-	 *   The maping depends on whether an alias of 'Translator.de' or 'Translator.de.ch' exists in the
+	 *   The mapping depends on whether an alias of 'Translator.de' or 'Translator.de.ch' exists in the
 	 *   object creation map.
 	 *
 	 * Format of the object creation map:
 	 *
 	 * {
-	 *     // the alias by which the object can be aquired through the create()-method,
+	 *     // the alias by which the object can be acquired through the create()-method,
 	 *     // in most cases this would equal the class name
 	 *   <object alias>: {
 	 *

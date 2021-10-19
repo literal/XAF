@@ -7,7 +7,7 @@ use Exception;
  * Extend this class for errors that are thrown to break the current processing and
  * generate an error message/page for the user.
  *
- * A UserlandError shall not be logged and not quit the application (i. e. final processing like
+ * A UserlandError shall not be logged and not quit the application (i.e. final processing like
  * writing modified data to a DB shall be carried out as usual).
  *
  * The "view context" is a simple hash that contains the information to be presented to the user.

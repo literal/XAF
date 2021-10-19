@@ -78,7 +78,7 @@ class FormFieldTest extends TestCase
 	 */
 	public function testParamsCanBeStored()
 	{
-		$options = ['x' => 'x-ray', 'y' => 'yankie', 'z' => 'zulu'];
+		$options = ['x' => 'x-ray', 'y' => 'yankee', 'z' => 'zulu'];
 
 		$this->object->setParam('options', $options);
 

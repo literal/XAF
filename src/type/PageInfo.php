@@ -3,7 +3,7 @@ namespace XAF\type;
 
 /**
  * public data container for information on a single page of a paginated result
- * (i.e. a "page" of data from a larger list, usually retuned from a data source query)
+ * (i.e. a "page" of data from a larger list, usually returned from a data source query)
  */
 class PageInfo
 {
@@ -25,7 +25,7 @@ class PageInfo
 	/** @var int Total number of pages */
 	public $pageCount = 0;
 
-	/** @var int Total number of items accross all pages */
+	/** @var int Total number of items across all pages */
 	public $totalItemCount = 0;
 
 	/**

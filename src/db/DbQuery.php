@@ -17,7 +17,7 @@ use XAF\exception\NotFoundError;
  *   is identical for all executions of the query.
  *
  * you might want to override:
- * - handleRowNotFound() to e. g. throw a custom exception when a single row query returned no result
+ * - handleRowNotFound() to e.g. throw a custom exception when a single row query returned no result
  * - processRow() to do custom post-processing on the raw DB rows
  */
 abstract class DbQuery

@@ -29,7 +29,7 @@ class LanguageMatcher
 			}
 		}
 
-		return isset($availableLanguageTags[0]) ? $availableLanguageTags[0] : null;
+		return $availableLanguageTags[0] ?? null;
 	}
 
 	/**

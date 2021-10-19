@@ -25,7 +25,7 @@ class OrValidator implements Validator
 			}
 		}
 
-		return isset($result) ? $result : ValidationResult::createValid($value);
+		return $result ?? ValidationResult::createValid($value);
 	}
 
 }

@@ -189,7 +189,7 @@ class SqliteErrorLogger implements ErrorLogger
 
 	protected function getServerVar( $key, $default = null )
 	{
-		return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
+		return $_SERVER[$key] ?? $default;
 	}
 
 	protected function getRemoteHostName()

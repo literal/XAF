@@ -7,7 +7,7 @@ namespace XAF\helper;
 class TokenGenerator
 {
 	/**
-	 * Generate random token in hex presentation, i. e. consisting of '0' to '9' and 'a' - 'f'
+	 * Generate random token in hex presentation, i.e. consisting of '0' to '9' and 'a' - 'f'
 	 *
 	 * @param int $charCount
 	 * @return string

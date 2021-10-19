@@ -24,7 +24,7 @@ use Twig_LoaderInterface;
  *   'common:foo.twig' is requested, the loader will not try to access '/tpl/app/foo.twig' but go for
  *   '/tpl/common/foo.twig' directly.
  *
- *   There are two pre-defined path aliasses:
+ *   There are two pre-defined path aliases:
  *   + 'default': refers to the second entry in the path list or below (!)
  *   + 'master': refers to the last entry in the path list
  */
@@ -47,7 +47,7 @@ class Loader implements Twig_LoaderInterface
 
 	/**
 	 * @param array|string $templatePaths Where to search for the templates files, can be multiple alternatives
-	 *     for fall-back. When specified as a hash, the hash keys can be used as path aliasses in template names like
+	 *     for fall-back. When specified as a hash, the hash keys can be used as path aliases in template names like
 	 *     this: 'path-alias:path/to/template.twig'.
 	 * @param string|null $templateQualifier Qualifier to search for before the final file name extension when a
 	 *    requested template is specified without extensions.
@@ -66,7 +66,7 @@ class Loader implements Twig_LoaderInterface
 
 	/**
 	 * @param array|string $templatePaths Where to search for the templates files, can be multiple alternatives
-	 *     for fall-back. When specified as a hash, the hash keys can be used as path aliasses in template names like
+	 *     for fall-back. When specified as a hash, the hash keys can be used as path aliases in template names like
 	 *     this: 'path-alias:path/to/template.twig'.
 	 */
 	public function setTemplatePaths( $templatePaths )

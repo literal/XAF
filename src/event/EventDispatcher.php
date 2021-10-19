@@ -5,7 +5,7 @@ interface EventDispatcher
 {
 	/**
 	 * @param string $eventKey arbitrary event ID, preferably in "domain.event" format
-	 * @param string $objectKey key by which the dispatcher can aquire the handling object
+	 * @param string $objectKey key by which the dispatcher can acquire the handling object
 	 * @param string $methodName method to call on the handler object when the event is triggered
 	 * @param bool $noCreate only call the handler if the object already exists
 	 */

@@ -54,7 +54,7 @@ class FormItemHashTest extends TestCase
 		$this->object->setValue(['f' => 'foo']);
 		$this->object->setValue(null);
 
-		$this->assertEquals(0, \count($this->object));
+		$this->assertCount(0, $this->object);
 	}
 
 	public function testThereAreNoItemsAfterSettingScalarValue()
@@ -64,7 +64,7 @@ class FormItemHashTest extends TestCase
 		$this->object->setValue(['f' => 'foo']);
 		$this->object->setValue('foo');
 
-		$this->assertEquals(0, \count($this->object));
+		$this->assertCount(0, $this->object);
 	}
 
 	public function testMissingHashSchemaElementThrowsException()
@@ -90,7 +90,7 @@ class FormItemHashTest extends TestCase
 
 		$this->object->setDefault();
 
-		$this->assertEquals(0, \count($this->object));
+		$this->assertCount(0, $this->object);
 	}
 
 	public function testElementsAreValidated()

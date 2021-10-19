@@ -121,7 +121,7 @@ class ComplexFormTest extends TestCase
 		$this->object->populateWithDefaults();
 
 		// 3 IDs and 3 names should have been validated
-		$this->assertEquals(1, \count($this->object['children']));
+		$this->assertCount(1, $this->object['children']);
 	}
 
 	public function testImportCanBePartial()
@@ -135,7 +135,7 @@ class ComplexFormTest extends TestCase
 			]
 		]);
 
-		$this->assertEquals(3, \count($this->object['children']));
+		$this->assertCount(3, $this->object['children']);
 	}
 
 	public function testExportContainsAllFields()

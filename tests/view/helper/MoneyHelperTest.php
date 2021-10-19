@@ -80,7 +80,7 @@ class MoneyHelperTest extends TestCase
 		$this->assertEquals('1.23', $result);
 	}
 
-	public function testExtractAmountAsNumberRetursZeroWhenCalledWithUnsupportedArgument()
+	public function testExtractAmountAsNumberReturnsZeroWhenCalledWithUnsupportedArgument()
 	{
 		$result = $this->object->extractAmountAsNumber(789);
 

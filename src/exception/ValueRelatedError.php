@@ -63,6 +63,6 @@ abstract class ValueRelatedError extends ExtendedError
 	 */
 	public function getValue()
 	{
-		return isset($this->debugInfo['related value']) ? $this->debugInfo['related value'] : null;
+		return $this->debugInfo['related value'] ?? null;
 	}
 }

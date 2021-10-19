@@ -3,7 +3,7 @@
   XAF - eXtensible Application Framework
 =========================================================================================
 
-XAF is a losely coupled general purpose PHP 5.3+ application framework.
+XAF is a loosely coupled general purpose PHP 5.3+ application framework.
 It consists of isolated components that can be used and combined individually.
 
 =========================================================================================

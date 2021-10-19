@@ -2,7 +2,7 @@
 namespace XAF\http;
 
 /**
- * Simple read-only stream source taylored to serve as source for sending HTTP streams/downloads
+ * Simple read-only stream source tailored to serve as source for sending HTTP streams/downloads
  */
 abstract class ChunkedDataSource
 {

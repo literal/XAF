@@ -84,7 +84,7 @@ class ChunkedZipDataSourceTest extends TestCase
 
 		Phake::when($this->progressiveZipBuilderMock)->getNextChunk()->thenReturnCallback(
 			function() use( $chunks, &$nextChunkIndex ) {
-				$result = isset($chunks[$nextChunkIndex]) ? $chunks[$nextChunkIndex] : '';
+				$result = $chunks[$nextChunkIndex] ?? '';
 				$nextChunkIndex++;
 				return $result;
 			}

@@ -5,7 +5,7 @@ use XAF\log\error\ErrorLogger;
 use XAF\exception\DebuggableError;
 
 /**
- * There is no protection against reursion here as PHP prevents this anyway:
+ * There is no protection against recursion here as PHP prevents this anyway:
  * Warnings during error handling and exceptions during exception handling do not call their respective handlers.
  */
 class DefaultErrorHandler implements ErrorHandler
@@ -174,9 +174,7 @@ class DefaultErrorHandler implements ErrorHandler
 			\E_USER_DEPRECATED => 'deprecated'
 		];
 
-		return isset($codes[$errorNumber])
-			? $codes[$errorNumber]
-			: 'php error #' . $errorNumber;
+		return $codes[$errorNumber] ?? 'php error #' . $errorNumber;
 	}
 
 	/**
@@ -288,7 +286,7 @@ class DefaultErrorHandler implements ErrorHandler
 
 	/**
 	 * To be extended by derived classes to provide environment specific
-	 * bedug info, e.g. the request details in a web app
+	 * debug info, e.g. the request details in a web app
 	 *
 	 * @return array
 	 */

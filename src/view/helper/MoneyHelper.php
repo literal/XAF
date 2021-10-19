@@ -32,7 +32,7 @@ class MoneyHelper
 
 	/**
 	 * @param Money|array|mixed $value
-	 * @param bool $useSymbol Use local currency symbol if available, e. g. '$' instead of 'USD'
+	 * @param bool $useSymbol Use local currency symbol if available, e.g. '$' instead of 'USD'
 	 * @return string
 	 */
 	public function formatMoney( $value, $useSymbol = true )
@@ -61,7 +61,7 @@ class MoneyHelper
 	}
 
 	/**
-	 * @param string $code ISO 4217 currency code (e. g. 'EUR' or 'USD')
+	 * @param string $code ISO 4217 currency code (e.g. 'EUR' or 'USD')
 	 * @return string
 	 */
 	public function formatCurrency( $code )

@@ -27,9 +27,9 @@ class Schema
 	 *                                     //    that depend on other field's values.
 	 *         eventTime: <bool>,   // Marks the column as providing the primary timestamp of the logged event.
 	 *                              // Only the first such column is used.
-	 *         lookupBy: <string>,  // Include row into the result the search pharse of the given type
+	 *         lookupBy: <string>,  // Include row into the result the search phrase of the given type
 	 *                              // matches the field value exactly
-	 *         searchBy: <string>,  // Include row into the result if the search pharse of the given type
+	 *         searchBy: <string>,  // Include row into the result if the search phrase of the given type
 	 *                              // is contained in the field value
 	 *         orderDesc: <bool>    // Order descending if result is ordered by this field
 	 *     }
@@ -193,6 +193,6 @@ class Schema
 	 */
 	private function buildSqlExpression( $fieldName )
 	{
-		return isset($this->fields[$fieldName]['sql']) ? $this->fields[$fieldName]['sql'] : $fieldName;
+		return $this->fields[$fieldName]['sql'] ?? $fieldName;
 	}
 }

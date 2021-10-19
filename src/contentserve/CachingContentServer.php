@@ -5,10 +5,10 @@ use XAF\http\FileSender;
 
 /**
  * Cache and deliver dynamically (on-the-fly) created content which is expensive to build
- * but does neither change often nor depend on the client's session (e. g. resized images
+ * but does neither change often nor depend on the client's session (e.g. resized images
  * or extracted audio snippets).
  *
- * This server retieves the actual content from an object implementing the ContentProvider interface.
+ * This server retrieves the actual content from an object implementing the ContentProvider interface.
  *
  * The resource IDs used to specify the content can really be anything. From simple integers to complete
  * URIs or file paths. It is up to the content provider object to make sense of the IDs.

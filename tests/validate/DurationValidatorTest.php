@@ -28,7 +28,7 @@ class DurationValidatorTest extends ValidationTestBase
 		$this->assertIsInt($result->value);
 	}
 
-	public function testLeadingsZeroesAreNotInterpretedAsOctalNumbers()
+	public function testLeadingZeroesAreNotInterpretedAsOctalNumbers()
 	{
 		$result = $this->object->validate('012:09');
 		$this->assertValidationResult(729, $result);
