@@ -1,16 +1,16 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_TokenParser as TokenParser;
-use Twig_Token as Token;
-use Twig_NodeInterface as NodeInterface;
+use Twig\TokenParser\AbstractTokenParser;
+use Twig\Token;
+use Twig_NodeInterface;
 
 /**
  * Based on twig-cache-extension (c) 2013 Alexander <iam.asm89@gmail.com>
  * @link https://github.com/asm89/twig-cache-extension
  * @license https://github.com/asm89/twig-cache-extension/blob/master/LICENSE
  */
-class CacheTokenParser extends TokenParser
+class CacheTokenParser extends AbstractTokenParser
 {
 	/**
 	 * @return string
@@ -22,7 +22,7 @@ class CacheTokenParser extends TokenParser
 
 	/**
 	 * @param Token $token
-	 * @return NodeInterface
+	 * @return Twig_NodeInterface
 	 */
 	public function parse( Token $token )
 	{

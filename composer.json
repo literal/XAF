@@ -19,7 +19,7 @@
 		"phpunit/phpunit": "^9",
 		"phake/phake": "^3",
 		"mikey179/vfsstream": "^1.6",
-		"twig/twig": "1.*",
+		"twig/twig": "^1.42",
 		"doctrine/common": "^2.5",
 		"swiftmailer/swiftmailer": "6.*"
 	},

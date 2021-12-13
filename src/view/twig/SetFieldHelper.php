@@ -1,7 +1,7 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Error_Runtime;
+use Twig\Error\RuntimeError;
 
 class SetFieldHelper
 {
@@ -17,7 +17,7 @@ class SetFieldHelper
 			}
 			if( !\is_array($currentTarget[$fieldKey]) )
 			{
-				throw new Twig_Error_Runtime('Fields can only be assigned on arrays or hashes.', $lineNumber, $fileName);
+				throw new RuntimeError('Fields can only be assigned on arrays or hashes.', $lineNumber, $fileName);
 			}
 
 			$currentTarget = $currentTarget[$fieldKey];

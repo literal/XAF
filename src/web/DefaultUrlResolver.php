@@ -204,7 +204,7 @@ class DefaultUrlResolver implements UrlResolver
 			case $path === '.' || $path === '':
 				return $this->rootPath . ($this->basePath !== '' ? $this->basePath : '/');
 
-			case $path[0] === '/':
+			case strval($path)[0] === '/':
 				return $this->rootPath . $path;
 
 			case \strpos($path, './') === 0:

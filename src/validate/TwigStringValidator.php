@@ -1,21 +1,21 @@
 <?php
 namespace XAF\validate;
 
-use Twig_Environment;
-use Twig_Error_Syntax;
+use Twig\Environment;
+use Twig\Error\SyntaxError as TwigSyntaxError;
 
 /**
  * @errorKey invalidTwigSyntax(message)
  */
 class TwigStringValidator extends NotEmptyValidator
 {
-	/** @var Twig_Environment */
+	/** @var Environment */
 	private $twigEnv;
 
 	/**
-	 * @param Twig_Environment $twigEnv
+	 * @param Environment $twigEnv
 	 */
-	public function __construct( Twig_Environment $twigEnv )
+	public function __construct( Environment $twigEnv )
 	{
 		$this->twigEnv = $twigEnv;
 	}
@@ -32,7 +32,7 @@ class TwigStringValidator extends NotEmptyValidator
 		{
 			$this->twigEnv->parse($this->twigEnv->tokenize($value));
 		}
-		catch( Twig_Error_Syntax $e )
+		catch( TwigSyntaxError $e )
 		{
 			return ValidationResult::createError('invalidTwigSyntax', ['message' => $e->getMessage()]);
 		}

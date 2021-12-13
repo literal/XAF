@@ -1,16 +1,16 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Template;
+use Twig\Template as TwigTemplate;
 
 /**
- * Specify this class in the 'base_template_class'-option when creating the Twig_Environment instance.
+ * Specify this class in the 'base_template_class'-option when creating the Environment instance.
  *
  * Modifications to the original Template class:
  * - disable catching of non-Twig extensions and wrapping them in a Twig extension
  * - return value from 'display' to make 'return' node work (in combination with overridden 'include' node)
  */
-abstract class Template extends Twig_Template
+abstract class Template extends TwigTemplate
 {
 	/**
 	 * @param array $context

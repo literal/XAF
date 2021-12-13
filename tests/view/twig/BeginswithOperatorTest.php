@@ -13,7 +13,7 @@ class BeginswithOperatorTest extends TwigTestBase
 	protected function setUp(): void
 	{
 		parent::setUp();
-		// Twig_Environment is missing an 'addOperator' method, so we need the extension to provide the operator
+		// Environment is missing an 'addOperator' method, so we need the extension to provide the operator
 		$this->environment->addExtension(new DefaultExtension());
 	}
 

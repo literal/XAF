@@ -1,15 +1,15 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Error_Loader;
+use Twig\Error\LoaderError;
 
 /**
- * The loader must throw Twig_Error_Loader to make template fallback ("{% include ['a', 'b', 'c'] %}") work.
+ * The loader must throw Twig\Error\LoaderError to make template fallback ("{% include ['a', 'b', 'c'] %}") work.
  *
  * So we inherit from the Twig exception class here and catch and rethrow as XAF error any exceptions not handled
  * within Twig itself.
  */
-class TwigTemplateNotFoundError extends Twig_Error_Loader
+class TwigTemplateNotFoundError extends LoaderError
 {
 	/** @var string */
 	private $originalMessage;

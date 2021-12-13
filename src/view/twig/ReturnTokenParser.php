@@ -1,29 +1,29 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_TokenParser;
-use Twig_Token;
+use Twig\TokenParser\AbstractTokenParser;
+use Twig\Token;
 use Twig_NodeInterface;
 
-class ReturnTokenParser extends Twig_TokenParser
+class ReturnTokenParser extends AbstractTokenParser
 {
 	/**
-	 * @param Twig_Token $token
+	 * @param Token $token
 	 * @return Twig_NodeInterface
 	 */
-	public function parse( Twig_Token $token )
+	public function parse( Token $token )
 	{
 		$stream = $this->parser->getStream();
 		$expressionParser = $this->parser->getExpressionParser();
 		$lineNumber = $token->getLine();
 
 		$valueNode = null;
-		if( !$stream->test(Twig_Token::BLOCK_END_TYPE) )
+		if( !$stream->test(Token::BLOCK_END_TYPE) )
 		{
 			$valueNode = $expressionParser->parseExpression();
 		}
 
-		$stream->expect(Twig_Token::BLOCK_END_TYPE);
+		$stream->expect(Token::BLOCK_END_TYPE);
 
 		return new ReturnNode($valueNode, $lineNumber, $this->getTag());
 	}

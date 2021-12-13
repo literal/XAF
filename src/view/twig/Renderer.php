@@ -2,18 +2,18 @@
 namespace XAF\view\twig;
 
 use XAF\view\TemplateRenderer;
-use Twig_Environment;
-use Twig_Template;
+use Twig\Environment;
+use Twig\Template;
 
 use XAF\exception\SystemError;
 use XAF\view\TemplateNotFoundError;
 
 class Renderer implements TemplateRenderer
 {
-	/** @var Twig_Environment */
+	/** @var Environment */
 	private $twigEnv;
 
-	public function __construct( Twig_Environment $twigEnv )
+	public function __construct( Environment $twigEnv )
 	{
 		$this->twigEnv = $twigEnv;
 	}
@@ -72,7 +72,7 @@ class Renderer implements TemplateRenderer
 
 	/**
 	 * @param strring $templateName
-	 * @return Twig_Template
+	 * @return Template
 	 */
 	private function loadTemplate( $templateName )
 	{

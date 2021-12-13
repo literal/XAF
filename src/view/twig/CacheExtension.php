@@ -1,7 +1,8 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Extension as Extension;
+use Twig\Extension\AbstractExtension;
+use Twig\TokenParser\TokenParserInterface;
 
 /**
  * Provides caching for rendering results of sections of templates.
@@ -15,7 +16,7 @@ use Twig_Extension as Extension;
  * @link https://github.com/asm89/twig-cache-extension
  * @license https://github.com/asm89/twig-cache-extension/blob/master/LICENSE
  */
-class CacheExtension extends Extension
+class CacheExtension extends AbstractExtension
 {
 	/** @var CacheProvider */
 	private $cacheProvider;
@@ -72,7 +73,7 @@ class CacheExtension extends Extension
 	}
 
 	/**
-	 * @return [TokenParserInterface]
+	 * @return TokenParserInterface[]
 	 */
 	public function getTokenParsers()
 	{

@@ -1,13 +1,13 @@
 <?php
 namespace XAF\view\twig;
 
+use Twig\Node\Node;
 use Twig_NodeInterface;
-use Twig_Node;
-use Twig_Compiler;
-use Twig_Node_Expression_Constant;
-use Twig_Node_Text;
+use Twig\Compiler;
+use Twig\Node\Expression\ConstantExpression;
+use Twig\Node\TextNode;
 
-class DefaultNode extends Twig_Node
+class DefaultNode extends Node
 {
 	/**
 	 * @param string $variableName
@@ -35,14 +35,14 @@ class DefaultNode extends Twig_Node
 	private function convertCapturedBlockValueToConstantIfPossible()
 	{
 		$value = $this->getNode('value');
-		if( $value instanceof Twig_Node_Text )
+		if( $value instanceof TextNode )
 		{
 			$this->setAttribute('capture', false);
-			$this->setNode('value', new Twig_Node_Expression_Constant($value->getAttribute('data'), $value->getLine()));
+			$this->setNode('value', new ConstantExpression($value->getAttribute('data'), $value->getLine()));
 		}
 	}
 
-	public function compile( Twig_Compiler $compiler )
+	public function compile( Compiler $compiler )
 	{
 		$compiler->addDebugInfo($this);
 
@@ -65,23 +65,23 @@ class DefaultNode extends Twig_Node
 		$compiler->write('}' . "\n");
 	}
 
-	private function compileBlockCaptureAssignment( Twig_Compiler $compiler )
+	private function compileBlockCaptureAssignment( Compiler $compiler )
 	{
 		$compiler->write('ob_start();' . "\n");
 		$compiler->subcompile($this->getNode('value'));
-		$compiler->raw('$_value = new Twig_Markup(ob_get_clean(), $this->env->getCharset());' . "\n");
+		$compiler->raw('$_value = new \\Twig\\Markup(ob_get_clean(), $this->env->getCharset());' . "\n");
 		$this->compileLeftSideOfAssignment($compiler);
 		$compiler->raw('$_value;' . "\n");
 	}
 
-	private function compileExpressionAssignment( Twig_Compiler $compiler )
+	private function compileExpressionAssignment( Compiler $compiler )
 	{
 		$this->compileLeftSideOfAssignment($compiler);
 
 		$valueNode = $this->getNode('value');
 		if( $this->getAttribute('safe') )
 		{
-			$compiler->raw('new Twig_Markup(')->subcompile($valueNode)->raw(', $this->env->getCharset())');
+			$compiler->raw('new \\Twig\\Markup(')->subcompile($valueNode)->raw(', $this->env->getCharset())');
 		}
 		else
 		{
@@ -90,7 +90,7 @@ class DefaultNode extends Twig_Node
 		$compiler->raw(';' . "\n");
 	}
 
-	private function compileLeftSideOfAssignment( Twig_Compiler $compiler )
+	private function compileLeftSideOfAssignment( Compiler $compiler )
 	{
 		$variableName = $this->getAttribute('variableName');
 		$compiler->write('$context[')->string($variableName)->raw(']')->raw(' = ');

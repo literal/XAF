@@ -1,6 +1,7 @@
 <?php
 
 use XAF\exception\SystemError;
+use Twig\TwigFunction;
 
 require_once __DIR__ . '/TwigTestBase.php';
 
@@ -28,7 +29,7 @@ class TemplateTest extends TwigTestBase
 	 */
 	public function testExceptionsDuringRenderingAreNotWrappedInTwigExceptions()
 	{
-		$this->environment->addFunction('fail', new Twig_Function_Function('TemplateTest::throwSystemError'));
+		$this->environment->addFunction(new TwigFunction('fail', 'TemplateTest::throwSystemError'));
 		$this->setupTemplate('template.twig', '{{ fail() }}');
 
 		$this->expectException(\XAF\exception\SystemError::class);
@@ -41,7 +42,7 @@ class TemplateTest extends TwigTestBase
 	 */
 	public function testExceptionsDuringBlockRenderingAreNotWrappedInTwigExceptions()
 	{
-		$this->environment->addFunction('fail', new Twig_Function_Function('TemplateTest::throwSystemError'));
+		$this->environment->addFunction(new TwigFunction('fail', 'TemplateTest::throwSystemError'));
 		$this->setupTemplate('template.twig', '{% block foo %}{{ fail() }}{% endblock %}');
 
 		$this->expectException(\XAF\exception\SystemError::class);

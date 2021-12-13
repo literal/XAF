@@ -1,10 +1,10 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Node;
-use Twig_Compiler;
+use Twig\Node\Node;
+use Twig\Compiler;
 
-class ReturnNode extends Twig_Node
+class ReturnNode extends Node
 {
 	public function __construct( $valueNode, $lineNumber, $tag = null )
 	{
@@ -12,9 +12,9 @@ class ReturnNode extends Twig_Node
 	}
 
 	/**
-	 * @param Twig_Compiler $compiler
+	 * @param Compiler $compiler
 	 */
-	public function compile( Twig_Compiler $compiler )
+	public function compile( Compiler $compiler )
 	{
 		$compiler->addDebugInfo($this);
 

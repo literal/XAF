@@ -1,10 +1,10 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Node as Node;
-use Twig_Node_Expression as Expression;
+use Twig\Node\Node;
+use Twig\Node\Expression\AbstractExpression;
 use Twig_NodeInterface as NodeInterface;
-use Twig_Compiler as Compiler;
+use Twig\Compiler;
 
 /**
  * Based on twig-cache-extension (c) 2013 Alexander <iam.asm89@gmail.com>
@@ -23,7 +23,8 @@ class CacheNode extends Node
 	 * @param int $lineno
 	 * @param string $tag
 	 */
-	public function __construct( Expression $key, Expression $lifetimeSeconds, NodeInterface $body, $lineno, $tag = null )
+	public function __construct( AbstractExpression $key, AbstractExpression $lifetimeSeconds, NodeInterface $body,
+		$lineno, $tag = null )
 	{
 		parent::__construct(
 			['key' => $key, 'lifetime_sec' => $lifetimeSeconds, 'body' => $body],

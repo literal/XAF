@@ -1,17 +1,17 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Node_Expression_Binary;
-use Twig_Compiler;
+use Twig\Node\Expression\Binary\AbstractBinary;
+use Twig\Compiler;
 
-class BeginsWithOperator extends Twig_Node_Expression_Binary
+class BeginsWithOperator extends AbstractBinary
 {
 	/**
 	 * Compile the node to PHP
 	 *
-	 * @param Twig_Compiler $compiler
+	 * @param Compiler $compiler
 	 */
-	public function compile( Twig_Compiler $compiler )
+	public function compile( Compiler $compiler )
 	{
 		$compiler
 			->raw('(strpos(')
@@ -21,7 +21,7 @@ class BeginsWithOperator extends Twig_Node_Expression_Binary
 			->raw(') === 0)');
 	}
 
-	public function operator( Twig_Compiler $compiler )
+	public function operator( Compiler $compiler )
 	{
 		return $compiler->raw('beginswith');
 	}

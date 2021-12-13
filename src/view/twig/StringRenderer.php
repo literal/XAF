@@ -1,19 +1,19 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Environment;
+use Twig\Environment;
 
 class StringRenderer
 {
 	/**
-	 * @var Twig_Environment
+	 * @var Environment
 	 */
 	private $twigEnv;
 
 	/**
-	 * @param Twig_Environment $twigEnv
+	 * @param Environment $twigEnv
 	 */
-	public function __construct( Twig_Environment $twigEnv )
+	public function __construct( Environment $twigEnv )
 	{
 		$this->twigEnv = $twigEnv;
 	}

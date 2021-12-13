@@ -1,16 +1,18 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
-use Twig_Filter_Method;
-use Twig_Function_Method;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
+
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+
 use XAF\di\Locator;
 
 /**
  * Make view helpers available inside Twig templates
  */
-class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class HelperImporter extends AbstractExtension implements GlobalsInterface
 {
 	/** @var Locator */
 	protected $helperLocator;
@@ -43,7 +45,7 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 	 *
 	 * For each filter, at least an alias and a method name must be specified. The alias is the one requested
 	 * from the helper locator to get the helper object. Optionally a hash of of Twig filter options can
-	 * be specified (eventually passed to the constructor of Twig_Filter).
+	 * be specified (eventually passed to the constructor of TwigFilter).
 	 *
 	 * @param array $filterMap {<filter name>: [<helper>, <method>[, <options>]], ...}
 	 */
@@ -58,7 +60,7 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 	 *
 	 * For each function, at least an alias and a method name must be specified. The alias is the one requested
 	 * from the helper locator to get the helper object. Optionally a hash of of Twig function options can
-	 * be specified (eventually passed to the constructor of Twig_Function).
+	 * be specified (eventually passed to the constructor of TwigFunction).
 	 *
 	 * @param array $functionMap {<function name>: [<helper>, <method>[, <options>]], ...}
 	 */
@@ -87,9 +89,13 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 		$filters = [];
 		foreach( $this->filterMap as $filterName => $def )
 		{
+			$helperKey = $def[0];
+			$methodName = $def[1];
 			$options = $def[2] ?? [];
-			$filters[$filterName] =
-				new Twig_Filter_Method($this, 'getHelper(\'' . $def[0] . '\')->' . $def[1], $options);
+			$callable = function(...$args) use ($helperKey, $methodName) {
+				return $this->getHelper($helperKey)->$methodName(...$args);
+			};
+			$filters[] = new TwigFilter($filterName, $callable, $options);
 		}
 		return $filters;
 	}
@@ -99,9 +105,13 @@ class HelperImporter extends Twig_Extension implements Twig_Extension_GlobalsInt
 		$functions = [];
 		foreach( $this->functionMap as $functionName => $def )
 		{
+			$helperKey = $def[0];
+			$methodName = $def[1];
 			$options = $def[2] ?? [];
-			$functions[$functionName] =
-				new Twig_Function_Method($this, 'getHelper(\'' . $def[0] . '\')->' . $def[1], $options);
+			$callable = function(...$args) use ($helperKey, $methodName) {
+				return $this->getHelper($helperKey)->$methodName(...$args);
+			};
+			$filters[] = new TwigFunction($functionName, $callable, $options);
 		}
 		return $functions;
 	}

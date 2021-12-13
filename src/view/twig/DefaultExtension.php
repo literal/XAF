@@ -1,11 +1,13 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Environment;
-use Twig_Extension;
-use Twig_SimpleFilter;
-use Twig_SimpleFunction;
-use Twig_ExpressionParser;
+use Twig\Environment;
+use Twig\Extension\AbstractExtension;
+use Twig\TokenParser\TokenParserInterface;
+use Twig\ExpressionParser;
+
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Adds various useful items to Twig
@@ -75,12 +77,12 @@ use Twig_ExpressionParser;
  *			   beginning of the right side string argument, boolean result
  *
  */
-class DefaultExtension extends Twig_Extension
+class DefaultExtension extends AbstractExtension
 {
 	/**
 	 * Returns the token parser instance to add to the existing list.
 	 *
-	 * @return array An array of Twig_TokenParser instances
+	 * @return TokenParserInterface[] An array of TokenParserInterface instances
 	 */
 	public function getTokenParsers()
 	{
@@ -99,18 +101,18 @@ class DefaultExtension extends Twig_Extension
 	public function getFilters()
 	{
 		return [
-			new Twig_SimpleFilter('round', 'round'),
-			new Twig_SimpleFilter('floor', 'floor'),
-			new Twig_SimpleFilter('ceil', 'ceil'),
-			new Twig_SimpleFilter('limit', 'XAF\\helper\\MathHelper::limit'),
-			new Twig_SimpleFilter('dump', 'XAF\\view\\twig\\DefaultExtension::dumpFilter'),
-			new Twig_SimpleFilter(
+			new TwigFilter('round', 'round'),
+			new TwigFilter('floor', 'floor'),
+			new TwigFilter('ceil', 'ceil'),
+			new TwigFilter('limit', 'XAF\\helper\\MathHelper::limit'),
+			new TwigFilter('dump', 'XAF\\view\\twig\\DefaultExtension::dumpFilter'),
+			new TwigFilter(
 				'jsLiteral',
 				'XAF\\helper\\JavascriptHelper::buildLiteral',
 				['is_safe' => ['js']]
 			),
-			new Twig_SimpleFilter('base64', 'base64_encode'),
-			new Twig_SimpleFilter('deepMerge', 'array_replace_recursive'),
+			new TwigFilter('base64', 'base64_encode'),
+			new TwigFilter('deepMerge', 'array_replace_recursive'),
 		];
 	}
 
@@ -122,15 +124,15 @@ class DefaultExtension extends Twig_Extension
 	public function getFunctions()
 	{
 		return [
-			new Twig_SimpleFunction(
+			new TwigFunction(
 				'include',
 				'XAF\\view\\twig\\DefaultExtension::includeFunction',
 				['needs_environment' => true, 'needs_context' => true]
 			),
 			// Override Twig core function 'constant' because it is a security threat
 			// (allows access to configuration values stored in global constants)
-			new Twig_SimpleFunction('constant', 'strval'),
-			new Twig_SimpleFunction(
+			new TwigFunction('constant', 'strval'),
+			new TwigFunction(
 				'currentDate',
 				function() { return \date('Y-m-d'); }
 			)
@@ -152,7 +154,7 @@ class DefaultExtension extends Twig_Extension
 				'beginswith' => [
 					'precedence' => 20, // like other comparison operators in the core extension, e.g. '=='
 					'class' => '\\XAF\\view\\twig\\BeginsWithOperator',
-					'associativity' => Twig_ExpressionParser::OPERATOR_LEFT
+					'associativity' => ExpressionParser::OPERATOR_LEFT
 				]
 			]
 		];
@@ -185,11 +187,11 @@ class DefaultExtension extends Twig_Extension
 	}
 
 	/**
-	 * @param Twig_Environment $env
+	 * @param Environment $env
 	 * @param array $context
 	 * @param string $templateName
 	 */
-	static public function includeFunction( Twig_Environment $env, array $context, $templateName = '' )
+	static public function includeFunction( Environment $env, array $context, $templateName = '' )
 	{
 		$template = $env->loadTemplate($templateName);
 		return $template->display($context);

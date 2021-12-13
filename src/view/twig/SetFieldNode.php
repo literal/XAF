@@ -2,12 +2,12 @@
 namespace XAF\view\twig;
 
 use Twig_NodeInterface;
-use Twig_Node;
-use Twig_Compiler;
-use Twig_Node_Expression_Constant;
-use Twig_Node_Text;
+use Twig\Node\Node;
+use Twig\Compiler;
+use Twig\Node\Expression\ConstantExpression;
+use Twig\Node\TextNode;
 
-class SetFieldNode extends Twig_Node
+class SetFieldNode extends Node
 {
 	/**
 	 * @param array $fieldKeyChain
@@ -41,14 +41,14 @@ class SetFieldNode extends Twig_Node
 	private function convertCapturedBlockValueToConstantIfPossible()
 	{
 		$value = $this->getNode('value');
-		if( $value instanceof Twig_Node_Text )
+		if( $value instanceof TextNode )
 		{
 			$this->setAttribute('capture', false);
-			$this->setNode('value', new Twig_Node_Expression_Constant($value->getAttribute('data'), $value->getLine()));
+			$this->setNode('value', new ConstantExpression($value->getAttribute('data'), $value->getLine()));
 		}
 	}
 
-	public function compile( Twig_Compiler $compiler )
+	public function compile( Compiler $compiler )
 	{
 		$compiler->addDebugInfo($this);
 
@@ -62,11 +62,11 @@ class SetFieldNode extends Twig_Node
 		}
 	}
 
-	private function compileBlockCaptureAssignment( Twig_Compiler $compiler )
+	private function compileBlockCaptureAssignment( Compiler $compiler )
 	{
 		$compiler->write('ob_start();' . "\n");
 		$compiler->subcompile($this->getNode('value'));
-		$compiler->write('$_value = new Twig_Markup(ob_get_clean(), $this->env->getCharset());' . "\n");
+		$compiler->write('$_value = new \\Twig\\Markup(ob_get_clean(), $this->env->getCharset());' . "\n");
 
 		$this->compileFieldKeyChain($compiler);
 		$this->compileValidTargetRuntimeCheck($compiler);
@@ -74,7 +74,7 @@ class SetFieldNode extends Twig_Node
 		$compiler->raw('$_value;' . "\n");
 	}
 
-	private function compileExpressionAssignment( Twig_Compiler $compiler )
+	private function compileExpressionAssignment( Compiler $compiler )
 	{
 		$this->compileFieldKeyChain($compiler);
 		$this->compileValidTargetRuntimeCheck($compiler);
@@ -82,7 +82,7 @@ class SetFieldNode extends Twig_Node
 		$valueNode = $this->getNode('value');
 		if( $this->getAttribute('safe') )
 		{
-			$compiler->raw('new Twig_Markup(')->subcompile($valueNode)->raw(', $this->env->getCharset())');
+			$compiler->raw('new \\Twig\\Markup(')->subcompile($valueNode)->raw(', $this->env->getCharset())');
 		}
 		else
 		{
@@ -91,7 +91,7 @@ class SetFieldNode extends Twig_Node
 		$compiler->raw(';' . "\n");
 	}
 
-	private function compileFieldKeyChain( Twig_Compiler $compiler )
+	private function compileFieldKeyChain( Compiler $compiler )
 	{
 		$fieldKeyNodes = $this->getAttribute('fieldKeyChain');
 
@@ -112,7 +112,7 @@ class SetFieldNode extends Twig_Node
 		$compiler->raw('];' . "\n");
 	}
 
-	private function compileValidTargetRuntimeCheck( Twig_Compiler $compiler )
+	private function compileValidTargetRuntimeCheck( Compiler $compiler )
 	{
 		$lineNumber = \intval($this->lineno) ?: -1;
 		$compiler->write(
@@ -122,7 +122,7 @@ class SetFieldNode extends Twig_Node
 		);
 	}
 
-	private function compileLeftSideOfAssignment( Twig_Compiler $compiler )
+	private function compileLeftSideOfAssignment( Compiler $compiler )
 	{
 		$compiler->write('$context');
 

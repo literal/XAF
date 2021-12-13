@@ -1,9 +1,9 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Environment;
+use Twig\Environment as TwigEnvironment;
 
-class Environment extends Twig_Environment
+class Environment extends TwigEnvironment
 {
 	/**
      * Gets the template class associated with the given string.

@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Twig_Environment as Environment;
-use Twig_Loader_Filesystem as Loader;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader as Loader;
 
 use org\bovigo\vfs\vfsStream;
 

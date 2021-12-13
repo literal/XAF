@@ -1,10 +1,10 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_Extension;
-use Twig_Filter_Function;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class CodeGeneratorExtension extends Twig_Extension
+class CodeGeneratorExtension extends AbstractExtension
 {
 	/**
 	 * Returns a list of functions to add to the existing list.
@@ -14,12 +14,12 @@ class CodeGeneratorExtension extends Twig_Extension
 	public function getFilters()
 	{
 		return [
-			'underscoreId' => new Twig_Filter_Function('XAF\\helper\\CodeGeneratorHelper::toUnderscoreIdentifier'),
-			'titleCaseId' => new Twig_Filter_Function('XAF\\helper\\CodeGeneratorHelper::toTitleCaseIdentifier'),
-			'camelCaseId' => new Twig_Filter_Function('XAF\\helper\\CodeGeneratorHelper::toCamelCaseIdentifier'),
-			'camelCaseToWords' => new Twig_Filter_Function('XAF\\helper\\CodeGeneratorHelper::camelCaseToWords'),
-			'regexEscape' => new Twig_Filter_Function('XAF\\helper\\CodeGeneratorHelper::regexEscape'),
-			'phpStringLiteral' => new Twig_Filter_Function('XAF\\helper\\CodeGeneratorHelper::toPhpStringLiteral'),
+			new TwigFilter('underscoreId', 'XAF\\helper\\CodeGeneratorHelper::toUnderscoreIdentifier'),
+			new TwigFilter('titleCaseId', 'XAF\\helper\\CodeGeneratorHelper::toTitleCaseIdentifier'),
+			new TwigFilter('camelCaseId', 'XAF\\helper\\CodeGeneratorHelper::toCamelCaseIdentifier'),
+			new TwigFilter('camelCaseToWords', 'XAF\\helper\\CodeGeneratorHelper::camelCaseToWords'),
+			new TwigFilter('regexEscape', 'XAF\\helper\\CodeGeneratorHelper::regexEscape'),
+			new TwigFilter('phpStringLiteral', 'XAF\\helper\\CodeGeneratorHelper::toPhpStringLiteral'),
 		];
 	}
 

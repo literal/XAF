@@ -2,7 +2,7 @@
 namespace XAF\validate;
 
 use XAF\view\twig\Environment;
-use Twig_Loader_String;
+use Twig_Loader_String as StringLoader;
 
 require_once 'ValidationTestBase.php';
 
@@ -16,7 +16,7 @@ class TwigStringValidatorTest extends ValidationTestBase
 
 	protected function setUp(): void
 	{
-		$loader = new Twig_Loader_String();
+		$loader = new StringLoader();
 		$twigEnv = new Environment($loader, ['autoescape' => false]);
 
 		$this->object = new TwigStringValidator($twigEnv);

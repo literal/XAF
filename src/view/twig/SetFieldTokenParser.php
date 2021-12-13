@@ -1,10 +1,10 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_TokenParser;
-use Twig_Token;
+use Twig\TokenParser\AbstractTokenParser;
+use Twig\Token;
+use Twig\Node\Expression\ConstantExpression;
 use Twig_NodeInterface;
-use Twig_Node_Expression_Constant;
 
 /**
  *
@@ -12,18 +12,18 @@ use Twig_Node_Expression_Constant;
  * {% setfield hash.key = value %}
  * {% setfield hash.key %}value{% endsetfield %}
  */
-class SetFieldTokenParser extends Twig_TokenParser
+class SetFieldTokenParser extends AbstractTokenParser
 {
-	public function parse( Twig_Token $token )
+	public function parse( Token $token )
 	{
 		$stream = $this->parser->getStream();
 		$fieldKeys = $this->parseFieldKeyChain();
 
-		$isBlockCaptureAssignment = $stream->test(Twig_Token::BLOCK_END_TYPE);
+		$isBlockCaptureAssignment = $stream->test(Token::BLOCK_END_TYPE);
 		$valueNode = $isBlockCaptureAssignment
 			? $this->parseBlockCaptureAssignmentValue()
 			: $this->parseExpressionAssignmentValue();
-		$stream->expect(Twig_Token::BLOCK_END_TYPE);
+		$stream->expect(Token::BLOCK_END_TYPE);
 
 		return new SetFieldNode(
 			$fieldKeys,
@@ -55,8 +55,8 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function parseTargetVariableNameNode()
 	{
 		$stream = $this->parser->getStream();
-		$token = $stream->expect(Twig_Token::NAME_TYPE);
-		return new Twig_Node_Expression_Constant($token->getValue(), $token->getLine());
+		$token = $stream->expect(Token::NAME_TYPE);
+		return new ConstantExpression($token->getValue(), $token->getLine());
 	}
 
 	/**
@@ -65,7 +65,7 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function existsNextFieldKey()
 	{
 		$stream = $this->parser->getStream();
-		return $stream->test(Twig_Token::PUNCTUATION_TYPE, ['.', '[']);
+		return $stream->test(Token::PUNCTUATION_TYPE, ['.', '[']);
 	}
 
 	/**
@@ -74,11 +74,11 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function parseFieldKey()
 	{
 		$stream = $this->parser->getStream();
-		if( $stream->test(Twig_Token::PUNCTUATION_TYPE, '.') )
+		if( $stream->test(Token::PUNCTUATION_TYPE, '.') )
 		{
 			return $this->parseLiteralFieldKey();
 		}
-		else if( $stream->test(Twig_Token::PUNCTUATION_TYPE, '[') )
+		else if( $stream->test(Token::PUNCTUATION_TYPE, '[') )
 		{
 			return $this->parseFieldKeyExpression();
 		}
@@ -91,9 +91,9 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function parseLiteralFieldKey()
 	{
 		$stream = $this->parser->getStream();
-		$stream->expect(Twig_Token::PUNCTUATION_TYPE, '.');
-		$token = $stream->expect(Twig_Token::NAME_TYPE);
-		return new Twig_Node_Expression_Constant($token->getValue(), $token->getLine());
+		$stream->expect(Token::PUNCTUATION_TYPE, '.');
+		$token = $stream->expect(Token::NAME_TYPE);
+		return new ConstantExpression($token->getValue(), $token->getLine());
 	}
 
 	/**
@@ -102,9 +102,9 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function parseFieldKeyExpression()
 	{
 		$stream = $this->parser->getStream();
-		$stream->expect(Twig_Token::PUNCTUATION_TYPE, '[');
+		$stream->expect(Token::PUNCTUATION_TYPE, '[');
 
-		if( $stream->test(Twig_Token::PUNCTUATION_TYPE, ']') )
+		if( $stream->test(Token::PUNCTUATION_TYPE, ']') )
 		{
 			$result = null;
 		}
@@ -112,7 +112,7 @@ class SetFieldTokenParser extends Twig_TokenParser
 		{
 			$result = $this->parser->getExpressionParser()->parseExpression();
 		}
-		$stream->expect(Twig_Token::PUNCTUATION_TYPE, ']');
+		$stream->expect(Token::PUNCTUATION_TYPE, ']');
 
 		return $result;
 	}
@@ -123,15 +123,15 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function parseBlockCaptureAssignmentValue()
 	{
 		$stream = $this->parser->getStream();
-		$stream->expect(Twig_Token::BLOCK_END_TYPE);
+		$stream->expect(Token::BLOCK_END_TYPE);
 		return $this->parser->subparse([$this, 'decideBlockEnd'], true);
 	}
 
 	/**
-	 * @param Twig_Token $token
+	 * @param Token $token
 	 * @return bool
 	 */
-	public function decideBlockEnd( Twig_Token $token )
+	public function decideBlockEnd( Token $token )
 	{
 		return $token->test('endsetfield');
 	}
@@ -142,7 +142,7 @@ class SetFieldTokenParser extends Twig_TokenParser
 	private function parseExpressionAssignmentValue()
 	{
 		$stream = $this->parser->getStream();
-		$stream->expect(Twig_Token::OPERATOR_TYPE, '=');
+		$stream->expect(Token::OPERATOR_TYPE, '=');
 		return $this->parser->getExpressionParser()->parseExpression();
 	}
 

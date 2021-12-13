@@ -1,12 +1,14 @@
 <?php
 namespace XAF\view\twig;
 
-use Twig_LoaderInterface;
+use Twig\Loader\LoaderInterface;
+use Twig\Loader\SourceContextLoaderInterface;
+use Twig\Source;
 
 /**
  * Custom Twig template loader
  *
- * Loads templates from the file system like \Twig_Loader_Filesystem but adds some features:
+ * Loads templates from the file system like Twig\Loader\FilesystemLoader but adds some features:
  *
  * - Language fallback strategy:
  *
@@ -28,7 +30,7 @@ use Twig_LoaderInterface;
  *   + 'default': refers to the second entry in the path list or below (!)
  *   + 'master': refers to the last entry in the path list
  */
-class Loader implements Twig_LoaderInterface
+class Loader implements LoaderInterface, SourceContextLoaderInterface
 {
 	/** @var array */
 	private $templatePaths;
@@ -112,6 +114,18 @@ class Loader implements Twig_LoaderInterface
 	{
 		return \file_get_contents($this->findTemplate($locator));
 	}
+
+	/**
+	 * Gets the source code of a template, given its name.
+	 *
+	 * @param string $locator string The template to load
+	 * @return string The template source code
+	 */
+    public function getSourceContext( $locator )
+    {
+        $path = $this->findTemplate($locator);
+        return new Source(\file_get_contents($path), $locator, $path);
+    }
 
 	/**
 	 * Gets the cache key to use for the cache for a given template name.
