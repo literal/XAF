@@ -41,14 +41,12 @@ class SmtpMailer implements Mailer
 	{
 		$this->resetLogger();
 
-		$message = Swift_Message::newInstance(); /* @var $message Swift_Message */
+		$message = new Swift_Message($mail->subject, $mail->textBody, 'text/plain', 'UTF-8');
 		$message->setFrom($mail->senderAddress, $mail->senderName);
-		$message->setSubject($mail->subject);
-		$message->setBody($mail->textBody, 'text/plain');
 
 		if( $mail->htmlBody !== null )
 		{
-			$message->addPart($mail->htmlBody, 'text/html');
+			$message->addPart($mail->htmlBody, 'text/html', 'UTF-8');
 		}
 
 		// Convert recipients into the crazy and hardly documented SwiftMailer format:
