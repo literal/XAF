@@ -1,5 +1,6 @@
 {
 	"name": "literal/xaf",
+	"version": "1.0.0",
 	"type": "library",
 	"description": "eXtensible Applicaton Framework",
 	"homepage": "https://github.com/literal/XAF",
