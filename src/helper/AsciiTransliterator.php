@@ -8,7 +8,7 @@ namespace XAF\helper;
  *   Copyright 2001, Sean M. Burke <sburke@cpan.org>, all rights reserved.
  *
  * Character tables were adapted to provide the common local transliterations for German, Danish and
- * Norwegian ( e. g. 'ä' -> 'ae' instead of 'ä' -> 'a').
+ * Norwegian ( e.g. 'ä' -> 'ae' instead of 'ä' -> 'a').
  */
 class AsciiTransliterator
 {
