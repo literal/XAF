@@ -289,7 +289,7 @@ abstract class SqlLogReader
         }
         if( $positiveTerms )
         {
-            $query->addWhereTerm(join(' OR ', $positiveTerms));
+            $query->addWhereTerm('(' . join(' OR ', $positiveTerms) . ')');
         }
 
 		if( $negativePlaceholders )
