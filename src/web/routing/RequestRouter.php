@@ -60,11 +60,11 @@ class RequestRouter
 	 *
 	 *       // Optional, named parameters to include in routing result
 	 *       // - Can be 'GETVAL', 'POSTVAL', 'REQUESTVAL' (either POST or GET) or 'COOKIE' with optional
-	 *       //   field name in parenthesis (e. g. 'GETVAL(id)') to capture values from the HTTP request,
+	 *       //   field name in parenthesis (e.g. 'GETVAL(id)') to capture values from the HTTP request,
 	 *       //   without parenthesis the default for the field name is the var name
-	 *       // - Should include a validation rule after a colon, e. g. '$1:int' or 'POSTVAL:string'
+	 *       // - Should include a validation rule after a colon, e.g. '$1:int' or 'POSTVAL:string'
 	 *       // Unlike filters, actions and catches, vars are not reset by an internal redirect but new vars
-	 *       // from the extra routing pass are mrged with the existing ones.
+	 *       // from the extra routing pass are merged with the existing ones.
 	 *     'vars': {<var name>: <string with regex backrefs²>, ...},
 	 *
 	 *       // All Optional, filters and controller methods to invoke for a route. Further items encountered in
@@ -246,8 +246,8 @@ class RequestRouter
 	{
 		$parts = \explode('=', $expression, 2);
 		$varName = $parts[0];
-		$expectedValue = isset($parts[1]) ? $parts[1] : null;
-		$actualValue = isset($this->result->vars[$varName]) ? $this->result->vars[$varName] : null;
+		$expectedValue = $parts[1] ?? null;
+		$actualValue = $this->result->vars[$varName] ?? null;
 
 		if( $expectedValue === null )
 		{
@@ -278,7 +278,7 @@ class RequestRouter
 	}
 
 	/**
-	 * Try to follow current route down to the end (i. e. until all of the request path has been matched against
+	 * Try to follow current route down to the end (i.e. until all of the request path has been matched against
 	 * routing table entries)
 	 *
 	 * @param array|string $route a routing table entry

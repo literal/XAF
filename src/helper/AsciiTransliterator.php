@@ -26,7 +26,7 @@ class AsciiTransliterator
 			[__CLASS__, 'replaceUtf8Char'],
 			$text
 		);
-		// Some replacements have a trailing space (e. g. Chinese syllable transliterations)
+		// Some replacements have a trailing space (e.g. Chinese syllable transliterations)
 		return \rtrim($result, ' ');
 	}
 

@@ -1,0 +1,2 @@
+[13-Dec-2021 23:53:24 Europe/Berlin] [testapp:errlog] failed to access error log db: SQLSTATE[HY000] [14] unable to open database file
+[13-Dec-2021 23:53:24 Europe/Berlin] [testapp:someclass] message
