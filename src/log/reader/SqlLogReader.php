@@ -252,13 +252,19 @@ abstract class SqlLogReader
 	{
 		$positivePlaceholders = [];
 		$negativePlaceholders = [];
+        $isNullValuePresent = false;
 		$paramsValues = [];
 
 		$index = 1;
 		foreach( $values as $filterValue )
 		{
 			$paramKey = $fieldName . $index;
-			if( \strlen($filterValue) > 0 && $filterValue[0] === '!' )
+
+            if( $filterValue === null )
+            {
+                $isNullValuePresent = true;
+            }
+			else if( \strlen($filterValue) > 0 && $filterValue[0] === '!' )
 			{
 				$negativePlaceholders[] = ':' . $paramKey;
 				$paramsValues[$paramKey] = \substr($filterValue, 1);
@@ -271,13 +277,20 @@ abstract class SqlLogReader
 			$index++;
 		}
 
+        $positiveTerms = [];
 		if( $positivePlaceholders )
 		{
-			$query->addWhereTerm(
-				$this->schema->getFieldSqlExpression($fieldName)
-				. ' IN(' . \implode(', ', $positivePlaceholders) . ')'
-			);
+            $positiveTerms[] = $this->schema->getFieldSqlExpression($fieldName)
+                . ' IN(' . \implode(', ', $positivePlaceholders) . ')';
 		}
+        if( $isNullValuePresent )
+        {
+            $positiveTerms[] = $this->schema->getFieldSqlExpression($fieldName) . ' IS NULL';
+        }
+        if( $positiveTerms )
+        {
+            $query->addWhereTerm(join(' OR ', $positiveTerms));
+        }
 
 		if( $negativePlaceholders )
 		{
