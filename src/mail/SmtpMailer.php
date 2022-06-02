@@ -6,6 +6,7 @@ use Swift_Plugins_Logger;
 use XAF\helper\MimeTypeResolver;
 use Swift_Message;
 use Swift_Attachment;
+use Swift_RfcComplianceException;
 use Swift_TransportException;
 
 class SmtpMailer implements Mailer
@@ -42,38 +43,10 @@ class SmtpMailer implements Mailer
 		$this->resetLogger();
 
 		$message = new Swift_Message($mail->subject, $mail->textBody, 'text/plain', 'UTF-8');
-		$message->setFrom($mail->senderAddress, $mail->senderName);
 
 		if( $mail->htmlBody !== null )
 		{
 			$message->addPart($mail->htmlBody, 'text/html', 'UTF-8');
-		}
-
-		// Convert recipients into the crazy and hardly documented SwiftMailer format:
-		// Array/hash mix of both {<address>: <name>, ...} and [<address>, ...]
-		$recipientsByType = [];
-		foreach( $mail->recipients as $recipient )
-		{
-			if( $recipient->name !== null )
-			{
-				$recipientsByType[$recipient->type][$recipient->address] = $recipient->name;
-			}
-			else
-			{
-				$recipientsByType[$recipient->type][] = $recipient->address;
-			}
-		}
-		if( isset($recipientsByType[MailRecipient::TYPE_TO]) )
-		{
-			$message->setTo($recipientsByType[MailRecipient::TYPE_TO]);
-		}
-		if( isset($recipientsByType[MailRecipient::TYPE_CC]) )
-		{
-			$message->setCc($recipientsByType[MailRecipient::TYPE_CC]);
-		}
-		if( isset($recipientsByType[MailRecipient::TYPE_BCC]) )
-		{
-			$message->setBcc($recipientsByType[MailRecipient::TYPE_BCC]);
 		}
 
 		foreach( $mail->attachedFiles as $fileName => $fileContents )
@@ -86,6 +59,9 @@ class SmtpMailer implements Mailer
 				)
 			);
 		}
+
+		$message->setFrom($mail->senderAddress, $mail->senderName);
+		$this->setReceipientsOnMessage($mail->recipients, $message);
 
 		try
 		{
@@ -107,6 +83,48 @@ class SmtpMailer implements Mailer
 		if( $this->logger )
 		{
 			$this->logger->clear();
+		}
+	}
+
+	/**
+	 * @param MailRecipient[] $recipients
+	 * @param type $message
+	 */
+	private function setReceipientsOnMessage(array $recipients, Swift_Message $message)
+	{
+		// Convert recipients into the crazy and hardly documented SwiftMailer format:
+		// Array/hash mix of both {<address>: <name>, ...} and [<address>, ...]
+		$recipientsByType = [];
+		foreach( $recipients as $recipient )
+		{
+			if( $recipient->name !== null )
+			{
+				$recipientsByType[$recipient->type][$recipient->address] = $recipient->name;
+			}
+			else
+			{
+				$recipientsByType[$recipient->type][] = $recipient->address;
+			}
+		}
+
+		try
+		{
+			if( isset($recipientsByType[MailRecipient::TYPE_TO]) )
+			{
+				$message->setTo($recipientsByType[MailRecipient::TYPE_TO]);
+			}
+			if( isset($recipientsByType[MailRecipient::TYPE_CC]) )
+			{
+				$message->setCc($recipientsByType[MailRecipient::TYPE_CC]);
+			}
+			if( isset($recipientsByType[MailRecipient::TYPE_BCC]) )
+			{
+				$message->setBcc($recipientsByType[MailRecipient::TYPE_BCC]);
+			}
+		}
+		catch( Swift_RfcComplianceException $e )
+		{
+			throw new MailRecipientError(array_column($recipients, 'address'));
 		}
 	}
 
