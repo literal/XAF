@@ -36,7 +36,6 @@ class SmtpMailer implements Mailer
 
 	/**
 	 * @param Mail $mail
-	 * @return bool
 	 */
 	public function send( Mail $mail )
 	{
@@ -88,7 +87,7 @@ class SmtpMailer implements Mailer
 
 	/**
 	 * @param MailRecipient[] $recipients
-	 * @param type $message
+	 * @param Swift_Message $message
 	 */
 	private function setReceipientsOnMessage(array $recipients, Swift_Message $message)
 	{

@@ -35,7 +35,7 @@ class XZipArchive
 	/**
 	 * Open existing ZIP archive
 	 *
-	 * @param type $zipFilePath
+	 * @param string $zipFilePath
 	 */
 	public function open( $zipFilePath )
 	{
@@ -52,7 +52,7 @@ class XZipArchive
 	/**
 	 * Create an empty ZIP archive file, file must not already exist
 	 *
-	 * @param type $zipFilePath
+	 * @param string $zipFilePath
 	 */
 	public function create( $zipFilePath )
 	{
@@ -136,7 +136,7 @@ class XZipArchive
 	}
 
 	/**
-	 * @param type $targetPath
+	 * @param string $targetPath
 	 * @param array|string|null $pathOrPathsInZip Extract all if null
 	 */
 	public function extractAllTo( $targetPath )

@@ -37,7 +37,7 @@ class SqliteErrorLogRotator
 	}
 
 	/**
-	 * @param type $liveDbPath
+	 * @param string $liveDbPath
 	 * @return string Full path to the created backup file
 	 */
 	private function backupLiveDb( $liveDbPath )

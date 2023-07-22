@@ -20,7 +20,6 @@ class SeleniumTestHelper
 	 *
 	 * @param string Title of the target page
 	 * @param array $links array of text links leading to the expected page
-	 * @return bool;
 	 */
 	public function navigateToPageWithTitleViaLinks( $title, array $links )
 	{
@@ -361,8 +360,8 @@ class SeleniumTestHelper
 	}
 
 	/**
-	 * @param type $checked
-	 * @param type $locator
+	 * @param bool $checked
+	 * @param string $locator
 	 */
 	private function assertCheckboxState( $checked, $locator )
 	{

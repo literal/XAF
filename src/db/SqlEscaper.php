@@ -5,7 +5,7 @@ class SqlEscaper
 {
 	/**
 	 * @param string $string
-	 * @return array 
+	 * @return string
 	 */
 	static public function likeEscape( $string )
 	{
@@ -21,7 +21,7 @@ class SqlEscaper
 
 	/**
 	 * @param string $string
-	 * @return array 
+	 * @return string
 	 */
 	static public function regexEscape( $string )
 	{

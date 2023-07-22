@@ -40,7 +40,7 @@ abstract class SqlLogReader
 
 	/**
 	 * @param string $fieldName
-	 * @param type $orderBy Any of the self::SORT_* constants
+	 * @param string $orderBy Any of the self::SORT_* constants
 	 */
 	public function getFilterValues( $fieldName, $orderBy = self::SORT_VALUE )
 	{

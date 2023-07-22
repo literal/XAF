@@ -15,7 +15,7 @@ class CookieSetter
 	 * @param string $name
 	 * @param string $value
 	 * @param int $expiryTs Unix timestamp for expiry, 0 for session cookies (that expire when the browser is closed)
-	 * @param type $path Root path - a page path relative to the current root URL path
+	 * @param string $path Root path - a page path relative to the current root URL path
 	 */
 	public function setCookie( $name, $value, $expiryTs, $path = '/' )
 	{
@@ -26,7 +26,7 @@ class CookieSetter
 	/**
 	 * @param string $name
 	 * @param string $value
-	 * @param type $path Root path - a page path relative to the current root URL path
+	 * @param string $path Root path - a page path relative to the current root URL path
 	 */
 	public function setSessionCookie( $name, $value, $path = '/' )
 	{

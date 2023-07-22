@@ -17,7 +17,7 @@ class PgsqlLogReader extends SqlLogReader
 	 * Make sure all filter value columns have indexes or this will be even slower than native distinct!
 	 *
 	 * @param string $fieldName
-	 * @param type $orderBy Any of the self::SORT_* constants
+	 * @param string $orderBy Any of the self::SORT_* constants
 	 */
 	public function getFilterValues( $fieldName, $orderBy = self::SORT_VALUE )
 	{
