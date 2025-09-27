@@ -210,7 +210,7 @@ class Request
 	 */
 	public function getServerHostName()
 	{
-		return $_SERVER['SERVER_NAME'];
+		return $_SERVER['SERVER_NAME'] ?: preg_replace('/:.+$/', '', $_SERVER['HTTP_HOST']);
 	}
 
 	/**
