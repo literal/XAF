@@ -114,10 +114,9 @@ class DefaultErrorHandler implements ErrorHandler
 	 * @param string $message
 	 * @param string $file
 	 * @param int $line
-	 * @param array|null $localContext
 	 * @return bool
 	 */
-	public function handleNonFatalPhpError( $errorTypeNumber, $message, $file, $line, $localContext )
+	public function handleNonFatalPhpError( $errorTypeNumber, $message, $file, $line )
 	{
 		// saved to prevent double logging here and later by the shutdown handler
 		$this->lastHandledPhpError = $errorTypeNumber . '|' . $message . '|' . $file . '|' . $line;
@@ -132,7 +131,6 @@ class DefaultErrorHandler implements ErrorHandler
 				\array_merge(
 					[
 						'location' => $file . ' (line ' . $line . ')',
-						'context' => $localContext,
 						'trace' => \debug_backtrace(false)
 					],
 					$this->getCommonDebugInfo()
