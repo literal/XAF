@@ -40,22 +40,22 @@ class Locator implements ArrayAccess
 	// Implementation of ArrayAccess
 	// ************************************************************************
 
-	public function offsetExists( $offset )
+	public function offsetExists( $offset ): bool
 	{
 		return $this->container->isKnownLocally($offset . $this->objectQualifier);
 	}
 
-	public function offsetGet( $offset )
+	public function offsetGet( $offset ): object
 	{
 		return $this->container->getLocal($offset . $this->objectQualifier);
 	}
 
-	public function offsetSet( $offset, $value )
+	public function offsetSet( $offset, $value ): void
 	{
 		throw new SystemError('object cannot be set', $offset);
 	}
 
-	public function offsetUnset( $offset )
+	public function offsetUnset( $offset ): void
 	{
 		throw new SystemError('object cannot be unset', $offset);
 	}

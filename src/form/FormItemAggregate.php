@@ -5,6 +5,7 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use ArrayIterator;
+use Traversable;
 
 use XAF\exception\SystemError;
 
@@ -114,12 +115,12 @@ abstract class FormItemAggregate extends FormItem implements ArrayAccess, Counta
 	// Implementation of ArrayAccess
 	// ************************************************************************
 
-	public function offsetExists( $offset )
+	public function offsetExists( $offset ): bool
 	{
 		return \array_key_exists($offset, $this->items);
 	}
 
-	public function offsetGet( $offset )
+	public function offsetGet( $offset ): FormItem
 	{
 		if( !$this->offsetExists($offset) )
 		{
@@ -128,12 +129,12 @@ abstract class FormItemAggregate extends FormItem implements ArrayAccess, Counta
 		return $this->items[$offset];
 	}
 
-	public function offsetSet( $offset, $value )
+	public function offsetSet( $offset, $value ): void
 	{
 		throw new SystemError('form items cannot be set', $offset, 'try setValue() on the item instead');
 	}
 
-	public function offsetUnset( $offset )
+	public function offsetUnset( $offset ): void
 	{
 		throw new SystemError('form items cannot be unset', $offset);
 	}
@@ -142,7 +143,7 @@ abstract class FormItemAggregate extends FormItem implements ArrayAccess, Counta
 	// Implementation of Countable
 	// ************************************************************************
 
-	public function count()
+	public function count(): int
 	{
 		return \count($this->items);
 	}
@@ -151,7 +152,7 @@ abstract class FormItemAggregate extends FormItem implements ArrayAccess, Counta
 	// Implementation of IteratorAggregate
 	// ************************************************************************
 
-	public function getIterator()
+	public function getIterator(): Traversable
 	{
 		return new ArrayIterator($this->items);
 	}

@@ -19,22 +19,22 @@ class ParamHolderArrayAccess implements ArrayAccess
 		$this->params = $params;
 	}
 
-	public function offsetExists( $offset )
+	public function offsetExists( $offset ): bool
 	{
 		return true;
 	}
 
-	public function offsetGet( $offset )
+	public function offsetGet( $offset ): mixed
 	{
 		return $this->params->get($offset);
 	}
 
-	public function offsetSet( $offset, $value )
+	public function offsetSet( $offset, $value ): void
 	{
 		throw new SystemError('field cannot be set', $offset);
 	}
 
-	public function offsetUnset( $offset )
+	public function offsetUnset( $offset ): void
 	{
 		throw new SystemError('field cannot be unset', $offset);
 	}
